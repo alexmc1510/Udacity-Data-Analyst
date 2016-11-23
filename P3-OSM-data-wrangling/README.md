@@ -3,7 +3,7 @@
 
 ### 1. A pdf document containing your answers to the rubric questions. This file should document your data wrangling process.
 
-The name of this file is P3-OSM-Data-Wrangling.pdf and is generated from P3-OSM-Data-Wrangling.ipynb inside the osm folder.
+The name of this file is [P3-OSM-Data-Wrangling.pdf](https://github.com/arjan-hada/Udacity-Data-Analyst/blob/master/P3-OSM-data-wrangling/P3-OSM-Data-Wrangling.pdf) and is generated from P3-OSM-Data-Wrangling.ipynb inside the osm folder.
 
 ### 2. Your Python code you used in auditing and cleaning your dataset for the final project. You may also include the original Case Study scripts, but make sure it is clear which code was used for the project, and which applies to the lesson quizzes.
 
