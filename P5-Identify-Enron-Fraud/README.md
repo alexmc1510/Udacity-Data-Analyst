@@ -22,7 +22,7 @@ These files are inside final\_project folder
 
 **final\_project\_dataset.pkl** : The dataset for the project, more details below. 
 
-**tester.py** : Script for checking the results we get from poi_id.py. Prints out the algorithm and evaluation metrics.
+**tester.py** : Script for checking the results we get from poi\_id.py. Prints out the algorithm and evaluation metrics.
 
 **tester\_with\_feature\_importances.py** : If using tree based classifiers this tester will print everything from tester.py plus feature importances of the features used.
 
