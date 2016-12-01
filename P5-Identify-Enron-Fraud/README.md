@@ -24,7 +24,7 @@ These files are inside final\_project folder
 
 **tester.py** : Script for checking the results we get from poi\_id.py. Prints out the algorithm and evaluation metrics.
 
-**tester\_with\_feature\_importances.py** : If using tree based classifiers this tester will print everything from tester.py plus feature importances of the features used.
+**tester\_plus.py** : Everything from tester.py plus additional functionalities like feature importances for tree based algorithms and confusion matrix. 
 
 **my_dataset.pkl, my\_classifier.pkl, my\_feature_list.pkl** : Three pickle files created when making my classifier. These can be tested using the tester.py script. 
 
