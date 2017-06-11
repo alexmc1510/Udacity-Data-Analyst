@@ -1,4 +1,4 @@
-[A/B test Udacity's website]
+A/B test Udacity's website
 ==============================
 
 ## Project Overview
