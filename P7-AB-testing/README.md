@@ -1,4 +1,4 @@
-[A/B test Udacity's website](http://htmlpreview.github.io/?https://github.com/arjan-hada/Udacity-Data-Analyst/blob/master/P7-AB-testing/P7-AB-testing.ipynb)
+[A/B test Udacity's website](http://nbviewer.jupyter.org/github/arjan-hada/Udacity-Data-Analyst/blob/d6e0bc4e77cea254ecc319f200afa1286ab3d69f/P7-AB-testing/P7-AB-testing.ipynb)
 ==============================
 
 ## Project Overview
@@ -13,4 +13,4 @@ Here is a screenshot of what the experiments look like:-
 The [project instructions](https://docs.google.com/document/u/1/d/1aCquhIqsUApgsxQ8-SQBAigFDcfWVVohLEXcV6jWbdI/pub?embedded=True) contain more details.
 
 ## Final project
-Click [here](http://htmlpreview.github.io/?https://github.com/arjan-hada/Udacity-Data-Analyst/blob/master/P7-AB-testing/P7-AB-testing.ipynb) to view project details and final recommendations.
+Click [here](http://nbviewer.jupyter.org/github/arjan-hada/Udacity-Data-Analyst/blob/d6e0bc4e77cea254ecc319f200afa1286ab3d69f/P7-AB-testing/P7-AB-testing.ipynb) to view project details and final recommendations.
