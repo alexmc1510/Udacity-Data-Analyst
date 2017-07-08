@@ -4,8 +4,8 @@ Explore the dataset on 1912 Titanic disaster using Numpy, Pandas and Plotly. Thi
 ![titanic](images/titanic.jpg)
 
 # Getting started
-1. Clone this repo to your computer.
-2. Get into the folder using `cd P2-Titanic-survival-exploration`.
+1. Clone the Udacity-Data-Analyst repo to your computer.
+2. Get into the folder using `cd Udacity-Data-Analyst/P2-Titanic-survival-exploration`.
 3. To view the project use `jupyter notebook` to lauch Notebook Dashboard.
 4. Open P2-Titanic-survival-exploration.ipynb from the Notebook Dashboard.
 5. Start exploring what made survival in Titanic disaster likely.
