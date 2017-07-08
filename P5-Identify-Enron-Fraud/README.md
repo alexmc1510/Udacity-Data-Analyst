@@ -1,4 +1,4 @@
-[Identify Fraud From Enron Data](http://htmlpreview.github.io/?https://github.com/arjan-hada/Udacity-Data-Analyst/blob/master/P5-Identify-Enron-Fraud/final_project/P5-Identify-Fraud-From-Enron-Data.html)
+# Identify Fraud From Enron Data
 ==============================
 
 ## Project Overview
@@ -14,7 +14,7 @@ Engineer the features, pick and tune an algorithm, and to test and evaluate your
 ## Scripts and dataset
 These files are inside final\_project folder
 
-[**P5-Identify-Fraud-From-Enron-Data.html**](http://htmlpreview.github.io/?https://github.com/arjan-hada/Udacity-Data-Analyst/blob/master/P5-Identify-Enron-Fraud/final_project/P5-Identify-Fraud-From-Enron-Data.html) : Final report for evaluation
+**P5-Identify-Fraud-From-Enron-Data.html**: Final report for evaluation
 
 **P5-Identify-Fraud-From-Enron-Data.ipynb** : POI identifer script and report together in a notebook. When you open the notebook click the icon on top right to display dynamic visualizations.
 
