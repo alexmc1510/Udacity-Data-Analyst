@@ -1,6 +1,11 @@
 
 # Project 3: OSM Data Wrangling 
+I live in the outskirts of Austin and love the plethora of outdoor activities :rowboat: the city of Austin has to offer. For this project, I wrangled 17 million lines of raw OpenStreetMap data of Austin (TX), using Python and built a user-friendly SQLite database :memo:. I used data munging techniques, such as assessing the quality of the data for validity, accuracy, completeness, consistency, and uniformity, to clean the OpenStreetMap data. In return, I discovered new things about Austin.
 
+![openstreetmap](images/openstreetmap.jpg)
+[Image courtesy](https://www.slideshare.net/mikel_maron/osm-transport)
+
+# Project Details
 ### 1. A pdf document containing your answers to the rubric questions. This file should document your data wrangling process.
 
 The name of this file is [P3-OSM-Data-Wrangling.pdf](https://github.com/arjan-hada/Udacity-Data-Analyst/blob/master/P3-OSM-data-wrangling/P3-OSM-Data-Wrangling.pdf) and is generated from P3-OSM-Data-Wrangling.ipynb inside the osm folder.
@@ -9,7 +14,7 @@ The name of this file is [P3-OSM-Data-Wrangling.pdf](https://github.com/arjan-ha
 
 Folder osm contains all the python scripts used for this project. 
 
-Python code used for auditing and cleaning data is in osm/data_sql.py.
+Python code used for auditing and cleaning data is in osm/data_sql.py. The project was run using Python 2.7.
 
 ### 3. A text file containing a link to the map position you wrangled in your project, a short description of the area and a reason for your choice.
 
