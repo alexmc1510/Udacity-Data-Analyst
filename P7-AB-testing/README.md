@@ -1,6 +1,6 @@
 # A/B test Udacity's website
 
-Udacity is considering online experiments to test potential improvements to their website. Two versions of the website are shown to different users - usually the existing website and a potential change. My goal is to design and analyze an A/B test and write up a recommendation :page_facing_up: on whether Udacity should introduce a new version of the website. 
+Udacity is considering online experiments :microscope: to test potential improvements to their website. Two versions of the website are shown to different users - usually the existing website and a potential change. My goal is to design and analyze an A/B test and write up a recommendation :page_facing_up: on whether Udacity should introduce a new version of the website. 
 
 The project involves choosing and characterize metrics to evaluate experiments, designing an experiment with enough statistical power, analyzing the results and draw valid conclusions, and ensuring that the participants of experiments are adequately protected.
 
