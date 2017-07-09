@@ -14,3 +14,13 @@ The [project instructions](https://docs.google.com/document/u/1/d/1aCquhIqsUApgs
 **Project report** is available as P7-AB-testing.ipynb and P7-AB-testing.html files
 
 **Statistical analysis and calculations** is available as excel files Experimental Design and Experimental Analysis.
+
+# Getting started
+1. Clone the Udacity-Data-Analyst repo to your computer.
+2. Get into the folder using `cd Udacity-Data-Analyst/P7-AB-testing/`.
+3. Use `jupyter notebook` to lauch Notebook Dashboard
+4. Open P7-AB-testing.ipynb from the Dashboard.
+5. Alternatively, one can view the report using P7-AB-testing.html file.
+6. Explore the design and analysis of A/B test.
+
+
