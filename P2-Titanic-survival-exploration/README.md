@@ -10,7 +10,7 @@ Explore the dataset on 1912 Titanic disaster using Numpy, Pandas and Plotly. Thi
 4. Open P2-Titanic-survival-exploration.ipynb from the Notebook Dashboard.
 5. Start exploring what made survival in Titanic disaster likely.
 
-# Installing the requirements
+# Install the requirements
 1. To run the project create the same environment used for the project from environment file `environment.yaml`.
 2. To create an environment from an environment file use `conda env create -f environment.yaml`.
 

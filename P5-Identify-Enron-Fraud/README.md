@@ -1,8 +1,8 @@
 # Identify Fraud From Enron Data
-==============================
 
-## Project Overview
-In 2000, Enron was one of the largest companies in the United States. By 2002, it had collapsed into bankruptcy due to widespread corporate fraud. In the resulting Federal investigation, a significant amount of typically confidential information entered into the public record, including tens of thousands of emails and detailed financial data for top executives. In this project, I will play detective, and put my skills to use by building a person of interest identifier based on financial and email data made public as a result of the Enron scandal. This data has been combined with a hand-generated list of persons of interest in the fraud case, which means individuals who were indicted, reached a settlement or plea deal with the government, or testified in exchange for prosecution immunity.
+In 2000, Enron was one of the largest companies in the United States. By 2002, it had collapsed into bankruptcy due to widespread corporate fraud. In the resulting Federal investigation, a significant amount of typically confidential information entered into the public record, including tens of thousands of emails and detailed financial data for top executives. In this project, I play detective :mag_right:, and put my skills to use by building a person of interest identifier based on financial and email data made public as a result of the Enron scandal. This data has been combined with a hand-generated list of persons of interest in the fraud case, which means individuals who were indicted, reached a settlement or plea deal with the government, or testified in exchange for prosecution immunity.
+
+![enron_fraud](images/enron_fraud.jpg)
 
 **Starter code**      
 on git: git clone https://github.com/udacity/ud120-projects.git      
@@ -11,7 +11,7 @@ Reads in the data, takes your features of choice, then puts them into a numpy ar
 **Project requirements**      
 Engineer the features, pick and tune an algorithm, and to test and evaluate your identifier. 
 
-## Scripts and dataset
+# Scripts and dataset
 These files are inside final\_project folder
 
 **P5-Identify-Fraud-From-Enron-Data.html**: Final report for evaluation
@@ -37,6 +37,11 @@ The features in the data fall into three major types, namely financial features,
 **email features**: ['to_messages', 'email_address', 'from_poi_to_this_person', 'from_messages', 'from_this_person_to_poi', 'shared_receipt_with_poi'] (units are generally number of emails messages; notable exception is ‘email_address’, which is a text string)
 
 **POI label**: [‘poi’] (boolean, represented as integer)
+
+# Install the requirements
+1. To run the project create the same environment used for the project from environment file `environment.yaml`.
+2. To create an environment from an environment file use `conda env create -f environment.yaml`.
+
 
 
 

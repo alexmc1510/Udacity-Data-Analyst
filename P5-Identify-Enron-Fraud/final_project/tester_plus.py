@@ -31,7 +31,7 @@ def test_classifier(clf, dataset, feature_list, folds = 1000):
     false_negatives = 0
     true_positives = 0
     false_positives = 0
-    all_importance = [] #for holding feature impoertance from each fold
+    all_importance = [] #for holding feature importance from each fold
     for train_idx, test_idx in cv: 
         features_train = []
         features_test  = []
