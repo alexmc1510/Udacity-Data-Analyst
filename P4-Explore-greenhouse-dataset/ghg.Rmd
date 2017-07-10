@@ -5,10 +5,7 @@ output: html_notebook
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
-  echo = TRUE,
-  fig.height = 4,
-  fig.width = 8,
-  fig.align = "center"
+  echo = TRUE
   )
 ```
 
@@ -353,13 +350,13 @@ labels <- sprintf(
 ) %>% lapply(htmltools::HTML)
 
 # Generate interactive map
-m = leaflet(countries) %>% 
+m = leaflet(countries, width = "100%") %>% 
   setView(0, 20, zoom = 1.5) %>%
   addTiles()
 ```
 
 
-```{r, width = 40, height = 30}
+```{r}
 p10 <- m %>% addPolygons(
     fillColor = ~pal(countries_plus_ghg[["EN.ATM.GHGT.KT.CE"]]),
     weight = 1,
@@ -581,13 +578,13 @@ labels2 <- sprintf(
 ) %>% lapply(htmltools::HTML)
 
 # Generate interactive map
-m2 = leaflet(countries) %>% 
+m2 = leaflet(countries, width = "100%") %>% 
   setView(0, 20, zoom = 1.5) %>%
   addTiles()
 ```
 
 
-```{r, width = 40, height = 30}
+```{r}
 p17 <- m2 %>% addPolygons(
     fillColor = ~pal2(countries_plus_emissions_per_capita[["emissions_tonnes_per_capita"]]),
     weight = 1,
@@ -638,7 +635,7 @@ Global warming is largely determined by total cumulative greenhouse gas emission
 
 ### 6.3 Find the average per capita greenhouse gas emissions from your country
 
-```{r, echo = FALSE, width = 40, height = 30}
+```{r, echo = FALSE}
 p17
 ```
 The interactive choropleth shows the average greenhouse gas emission per capita for every country (tonnes of CO2 equivalent). The per capita emission has been divided into five quantiles and colored accordingly.

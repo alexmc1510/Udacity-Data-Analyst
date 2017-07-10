@@ -1,5 +1,5 @@
 # Explore greenhouse gas emissions 
-If you know me I deeply care about the health of our planet. The biggest threat our civilization and the life of planet :earth_americas: right now is global warming. According to Intergovernmental Panel on Climate Change - "Scientific evidence for warming of the climate system is unequivocal". The major cause of global warming is the human expansion of natural greenhouse gases. Continued exploitation of fossil fuels on business-as-usual rate has increased the concentration of atmospheric carbon dioxide (CO2) forcing the climate to change over the years.
+If you know me I deeply care about the health of our planet. The biggest threat our civilization and the life of planet :earth_americas: right now is global warming. According to Intergovernmental Panel on Climate Change - "Scientific evidence for warming of the climate system is unequivocal". The major cause of global warming is the human expansion of natural greenhouse gases. Continued exploitation of fossil fuels :fuelpump: on business-as-usual rate has increased the concentration of atmospheric carbon dioxide (CO2) forcing the climate to change over the years :cyclone::ocean:.
 
 ![relentless_rise_of_co2](images/relentless_rise_of_co2.jpg)
 <br>
