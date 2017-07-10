@@ -1,0 +1,6 @@
+"0","years_to_match_China_emission <- ghg_complete %>% "
+"0","  filter(!Country == ""World"" & Year == 2012) %>% "
+"0","  select(Country, Year, Emissions) %>% "
+"0","  arrange(desc(Emissions)) %>% "
+"0","  mutate(years_to_match_China = round(Emissions[[1]]/Emissions))"
+"0","years_to_match_China_emission"

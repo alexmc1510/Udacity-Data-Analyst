@@ -1,0 +1,4 @@
+"0","m %>% addPolygons()"
+"2","Error in polygonData.default(data) : 
+  Don't know how to get path data from object of class data.frame
+"

@@ -1,0 +1,6 @@
+"0","ghg_complete <- ghg %>% "
+"0","  select(-(`Indicator Name`:`1969`), -(`2013`:X62)) %>% "
+"0","  inner_join(ghg_metadata1, by = ""Country Code"") %>% "
+"0","  gather(`1970`:`2012`, key = ""Year"", value = ""Emissions"") %>% "
+"0","  rename(Country = `Country Name`, ISO_A3 = `Country Code`) "
+"0","ghg_complete"

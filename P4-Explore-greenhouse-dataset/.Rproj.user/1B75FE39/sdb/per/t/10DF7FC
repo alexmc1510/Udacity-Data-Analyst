@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"ghg\"\nauthor: \"Arjan Hada\"\ndate: \"May 7, 2017\"\noutput: html_document\n---\n\n```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\n```\n\n# Load the libraries\n\n```{r}\nlibrary(tidyverse)\n```\n\n# Load the data\n\n```{r}\nghg <- read_csv(\"data/ghg_who.csv\", skip = 4)\nghg_metadata <- read_csv(\"data/Metadata_Country_ghg_who.csv\")\n```\n\n# Print the data\n```{r}\nghg\nghg_metadata\n```\n\n# Clean the ghg metadata\n\nThere are some Country codes which are actually aggregate for several countries. For example, ARB represents aggregate for the Arab world. We will remove those country codes from the analysis.\n\nWe will also drop columns SpecialNotes, TableName and an empty column X6.\n\n```{r}\nghg_metadata1 <- ghg_metadata %>% \n  select(`Country Code`:IncomeGroup) %>% \n  filter(!(is.na(Region) & is.na(IncomeGroup)))\nghg_metadata1\n```\n\n# Clean the ghg data\n\nWe will drop the column Indicator Name and Indicator Code because it is constant in the dataset. Let us also drop columns which are completely NAs.\n```{r}\nghg1 <- ghg %>% \n  select(-(`Indicator Name`:`1969`), -(`2013`:X62))\nghg1\n```\n\n# Join two datasets and tidy it\n\nWe will inner join ghg and ghg_metadata on Country CodE to create one single dataset\n```{r}\nghg1 %>% \n  inner_join(ghg_metadata1, by = \"Country Code\") %>% \n  gather(`1970`:`2012`, key = \"year\", value = \"ghg_emissions\")\n```\n\n\n",
+    "created" : 1494511570285.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "433895183",
+    "id" : "10DF7FC",
+    "lastKnownWriteTime" : 1494523216,
+    "last_content_update" : 1494523216465,
+    "path" : "/Users/AHada/Courses/EDA/ghg/ghg.Rmd",
+    "project_path" : "ghg.Rmd",
+    "properties" : {
+        "last_setup_crc32" : "C6DC712Fbb338d19",
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

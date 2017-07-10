@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<script src="lib/jquery-1.11.0/jquery.min.js"></script>
+<script src="lib/detect-resize-0.5.3/jquery.resize.js"></script>
+<link href="lib/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" />
+<script src="lib/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="lib/d3-3.5.2/d3.min.js"></script>
+<script src="lib/vega-1.4.3/vega.min.js"></script>
+<script src="lib/lodash-2.2.1/lodash.min.js"></script>
+<script>var lodash = _.noConflict();</script>
+<link href="lib/ggvis-0.4.3/css/ggvis.css" rel="stylesheet" />
+<script src="lib/ggvis-0.4.3/js/ggvis.js"></script>
+
+</head>
+<body style="background-color:white;">
+<div id="plot_908550715-container" class="ggvis-output-container">
+  <div id="plot_908550715" class="ggvis-output"></div>
+  <div class="plot-gear-icon">
+    <nav class="ggvis-control">
+      <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
+      <ul class="ggvis-dropdown">
+        <li>
+          Renderer: 
+          <a id="plot_908550715_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_908550715" data-renderer="svg">SVG</a>
+           | 
+          <a id="plot_908550715_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_908550715" data-renderer="canvas">Canvas</a>
+        </li>
+        <li>
+          <a id="plot_908550715_download" class="ggvis-download" data-plot-id="plot_908550715">Download</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<script type="text/javascript">
+var plot_908550715_spec = {
+  "data": [
+    {
+      "name": ".0_flat",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "Emissions": "number"
+        }
+      },
+      "values": "\"Region\",\"Year\",\"Emissions\"\n\"Latin America &amp; Caribbean\",\"1970\",2454614.93264852\n\"South Asia\",\"1970\",997942.6068936\n\"Sub-Saharan Africa\",\"1970\",3145184.86117467\n\"Europe &amp; Central Asia\",\"1970\",9050460.7336681\n\"Middle East &amp; North Africa\",\"1970\",634578.748566\n\"East Asia &amp; Pacific\",\"1970\",4836268.16610639\n\"North America\",\"1970\",5895826.525182\n\"Latin America &amp; Caribbean\",\"1971\",2058777.36311447\n\"South Asia\",\"1971\",1001722.7983924\n\"Sub-Saharan Africa\",\"1971\",2264050.09442867\n\"Europe &amp; Central Asia\",\"1971\",9101331.92898\n\"Middle East &amp; North Africa\",\"1971\",669140.808619\n\"East Asia &amp; Pacific\",\"1971\",4561698.75553726\n\"North America\",\"1971\",5953199.317507\n\"Latin America &amp; Caribbean\",\"1972\",2318632.5277264\n\"South Asia\",\"1972\",1016822.6875269\n\"Sub-Saharan Africa\",\"1972\",2359208.44157367\n\"Europe &amp; Central Asia\",\"1972\",9497811.58801\n\"Middle East &amp; North Africa\",\"1972\",733877.172219\n\"East Asia &amp; Pacific\",\"1972\",5332759.26574393\n\"North America\",\"1972\",6202077.955556\n\"Latin America &amp; Caribbean\",\"1973\",2185736.0610613\n\"South Asia\",\"1973\",1028997.7411218\n\"Sub-Saharan Africa\",\"1973\",2529215.81994167\n\"Europe &amp; Central Asia\",\"1973\",9876616.1076\n\"Middle East &amp; North Africa\",\"1973\",830530.060623\n\"East Asia &amp; Pacific\",\"1973\",5485589.22376541\n\"North America\",\"1973\",6433903.382676\n\"Latin America &amp; Caribbean\",\"1974\",2316630.0882825\n\"South Asia\",\"1974\",1057788.0885613\n\"Sub-Saharan Africa\",\"1974\",2264326.43427233\n\"Europe &amp; Central Asia\",\"1974\",9936637.46466\n\"Middle East &amp; North Africa\",\"1974\",831556.827571\n\"East Asia &amp; Pacific\",\"1974\",5029101.01237918\n\"North America\",\"1974\",6295263.05\n\"Latin America &amp; Caribbean\",\"1975\",2492540.83513397\n\"South Asia\",\"1975\",1095576.622564\n\"Sub-Saharan Africa\",\"1975\",2509688.292449\n\"Europe &amp; Central Asia\",\"1975\",9990060.03061\n\"Middle East &amp; North Africa\",\"1975\",829704.757689\n\"East Asia &amp; Pacific\",\"1975\",5202145.37341496\n\"North America\",\"1975\",6069698.792523\n\"Latin America &amp; Caribbean\",\"1976\",2749485.15328917\n\"South Asia\",\"1976\",1121432.5082829\n\"Sub-Saharan Africa\",\"1976\",2394647.95228267\n\"Europe &amp; Central Asia\",\"1976\",10448403.81094\n\"Middle East &amp; North Africa\",\"1976\",943614.995445\n\"East Asia &amp; Pacific\",\"1976\",5496438.36434128\n\"North America\",\"1976\",6449398.88\n\"Latin America &amp; Caribbean\",\"1977\",2481305.10221322\n\"South Asia\",\"1977\",1149113.9830474\n\"Sub-Saharan Africa\",\"1977\",2666298.56865933\n\"Europe &amp; Central Asia\",\"1977\",10543517.71111\n\"Middle East &amp; North Africa\",\"1977\",966944.54795\n\"East Asia &amp; Pacific\",\"1977\",6399301.70159839\n\"North America\",\"1977\",6623394.688008\n\"Latin America &amp; Caribbean\",\"1978\",2744834.35323666\n\"South Asia\",\"1978\",1162553.4056524\n\"Sub-Saharan Africa\",\"1978\",2648809.62819933\n\"Europe &amp; Central Asia\",\"1978\",10785290.46998\n\"Middle East &amp; North Africa\",\"1978\",993040.72488\n\"East Asia &amp; Pacific\",\"1978\",6423486.31316114\n\"North America\",\"1978\",6605082.220219\n\"Latin America &amp; Caribbean\",\"1979\",2907317.85280283\n\"South Asia\",\"1979\",1199829.8933097\n\"Sub-Saharan Africa\",\"1979\",3230505.837652\n\"Europe &amp; Central Asia\",\"1979\",11058145.23097\n\"Middle East &amp; North Africa\",\"1979\",1018561.41968\n\"East Asia &amp; Pacific\",\"1979\",6633707.83030681\n\"North America\",\"1979\",6792033.97\n\"Latin America &amp; Caribbean\",\"1980\",3040379.48355228\n\"South Asia\",\"1980\",1221847.08768\n\"Sub-Saharan Africa\",\"1980\",3026521.114579\n\"Europe &amp; Central Asia\",\"1980\",10961774.78297\n\"Middle East &amp; North Africa\",\"1980\",1016408.63292\n\"East Asia &amp; Pacific\",\"1980\",6827762.70572622\n\"North America\",\"1980\",6608490.846422\n\"Latin America &amp; Caribbean\",\"1981\",2928972.19127242\n\"South Asia\",\"1981\",1278828.60669\n\"Sub-Saharan Africa\",\"1981\",2696401.098013\n\"Europe &amp; Central Asia\",\"1981\",10771439.8300594\n\"Middle East &amp; North Africa\",\"1981\",932039.53034\n\"East Asia &amp; Pacific\",\"1981\",6524060.40571727\n\"North America\",\"1981\",6530407.246054\n\"Latin America &amp; Caribbean\",\"1982\",3049425.00983303\n\"South Asia\",\"1982\",1317620.29117\n\"Sub-Saharan Africa\",\"1982\",2969640.519741\n\"Europe &amp; Central Asia\",\"1982\",10676427.8517403\n\"Middle East &amp; North Africa\",\"1982\",1009981.69612\n\"East Asia &amp; Pacific\",\"1982\",8528511.26893001\n\"North America\",\"1982\",6111325.987286\n\"Latin America &amp; Caribbean\",\"1983\",3031186.14142961\n\"South Asia\",\"1983\",1364060.89736\n\"Sub-Saharan Africa\",\"1983\",2930214.636897\n\"Europe &amp; Central Asia\",\"1983\",10692610.0898986\n\"Middle East &amp; North Africa\",\"1983\",1048866.27062\n\"East Asia &amp; Pacific\",\"1983\",7986798.65192864\n\"North America\",\"1983\",6098981.315036\n\"Latin America &amp; Caribbean\",\"1984\",2776182.20925395\n\"South Asia\",\"1984\",1432601.054254\n\"Sub-Saharan Africa\",\"1984\",2266117.483632\n\"Europe &amp; Central Asia\",\"1984\",10760570.2876465\n\"Middle East &amp; North Africa\",\"1984\",1027321.88011\n\"East Asia &amp; Pacific\",\"1984\",7193049.57667078\n\"North America\",\"1984\",6331562.955537\n\"Latin America &amp; Caribbean\",\"1985\",2857616.67468712\n\"South Asia\",\"1985\",1459375.180857\n\"Sub-Saharan Africa\",\"1985\",2241454.45352233\n\"Europe &amp; Central Asia\",\"1985\",10878536.905961\n\"Middle East &amp; North Africa\",\"1985\",894675.92733\n\"East Asia &amp; Pacific\",\"1985\",7153365.8050698\n\"North America\",\"1985\",6354321.231181\n\"Latin America &amp; Caribbean\",\"1986\",2982878.58245142\n\"South Asia\",\"1986\",1524697.558255\n\"Sub-Saharan Africa\",\"1986\",2166331.67328233\n\"Europe &amp; Central Asia\",\"1986\",11048534.863745\n\"Middle East &amp; North Africa\",\"1986\",918471.19124\n\"East Asia &amp; Pacific\",\"1986\",7807040.23502663\n\"North America\",\"1986\",6297473.249455\n\"Latin America &amp; Caribbean\",\"1987\",3287880.83329619\n\"South Asia\",\"1987\",1527153.41761\n\"Sub-Saharan Africa\",\"1987\",2646127.17924933\n\"Europe &amp; Central Asia\",\"1987\",11137126.08167\n\"Middle East &amp; North Africa\",\"1987\",922611.62761\n\"East Asia &amp; Pacific\",\"1987\",8821911.68556443\n\"North America\",\"1987\",6315318.578642\n\"Latin America &amp; Caribbean\",\"1988\",3106319.85547987\n\"South Asia\",\"1988\",1648643.114767\n\"Sub-Saharan Africa\",\"1988\",2141000.114427\n\"Europe &amp; Central Asia\",\"1988\",11290181.141731\n\"Middle East &amp; North Africa\",\"1988\",967235.04095\n\"East Asia &amp; Pacific\",\"1988\",8096084.70435707\n\"North America\",\"1988\",6809717.182722\n\"Latin America &amp; Caribbean\",\"1989\",3158259.0746659\n\"South Asia\",\"1989\",1715009.02168\n\"Sub-Saharan Africa\",\"1989\",2355342.73398167\n\"Europe &amp; Central Asia\",\"1989\",11306247.066262\n\"Middle East &amp; North Africa\",\"1989\",1018313.39782\n\"East Asia &amp; Pacific\",\"1989\",8088034.84479697\n\"North America\",\"1989\",7016378.804785\n\"Latin America &amp; Caribbean\",\"1990\",3365946.00565312\n\"South Asia\",\"1990\",1743930.29699\n\"Sub-Saharan Africa\",\"1990\",3394980.0010204\n\"Europe &amp; Central Asia\",\"1990\",11706235.634271\n\"Middle East &amp; North Africa\",\"1990\",1012934.9441797\n\"East Asia &amp; Pacific\",\"1990\",9056633.0587611\n\"North America\",\"1990\",6745431.462347\n\"Latin America &amp; Caribbean\",\"1991\",3321120.36119493\n\"South Asia\",\"1991\",1802558.97021\n\"Sub-Saharan Africa\",\"1991\",2944893.67651133\n\"Europe &amp; Central Asia\",\"1991\",11301662.497577\n\"Middle East &amp; North Africa\",\"1991\",1094897.162717\n\"East Asia &amp; Pacific\",\"1991\",10239702.8075636\n\"North America\",\"1991\",6700374.787884\n\"Latin America &amp; Caribbean\",\"1992\",3429705.80431917\n\"South Asia\",\"1992\",1856479.79733\n\"Sub-Saharan Africa\",\"1992\",3987161.01683167\n\"Europe &amp; Central Asia\",\"1992\",10616013.88373\n\"Middle East &amp; North Africa\",\"1992\",1100963.15052\n\"East Asia &amp; Pacific\",\"1992\",10755073.1502569\n\"North America\",\"1992\",6756637.700133\n\"Latin America &amp; Caribbean\",\"1993\",3622811.98197386\n\"South Asia\",\"1993\",1903250.71922\n\"Sub-Saharan Africa\",\"1993\",2884391.71601833\n\"Europe &amp; Central Asia\",\"1993\",10265604.238899\n\"Middle East &amp; North Africa\",\"1993\",1150534.21904\n\"East Asia &amp; Pacific\",\"1993\",10050043.2010268\n\"North America\",\"1993\",6938768.985788\n\"Latin America &amp; Caribbean\",\"1994\",3214429.44807307\n\"South Asia\",\"1994\",1972951.080284\n\"Sub-Saharan Africa\",\"1994\",3115165.033527\n\"Europe &amp; Central Asia\",\"1994\",9748546.017587\n\"Middle East &amp; North Africa\",\"1994\",1214656.74479\n\"East Asia &amp; Pacific\",\"1994\",11053907.5975045\n\"North America\",\"1994\",7182693.311126\n\"Latin America &amp; Caribbean\",\"1995\",3397823.060557\n\"South Asia\",\"1995\",2058404.803803\n\"Sub-Saharan Africa\",\"1995\",3242554.91359\n\"Europe &amp; Central Asia\",\"1995\",9677678.517652\n\"Middle East &amp; North Africa\",\"1995\",1526488.21047\n\"East Asia &amp; Pacific\",\"1995\",10844899.0602238\n\"North America\",\"1995\",7201818.999905\n\"Latin America &amp; Caribbean\",\"1996\",3511070.686842\n\"South Asia\",\"1996\",2131356.679316\n\"Sub-Saharan Africa\",\"1996\",3028219.84851767\n\"Europe &amp; Central Asia\",\"1996\",9814552.89112\n\"Middle East &amp; North Africa\",\"1996\",1572334.03918\n\"East Asia &amp; Pacific\",\"1996\",10794822.0393445\n\"North America\",\"1996\",7276980.576508\n\"Latin America &amp; Caribbean\",\"1997\",3592820.842732\n\"South Asia\",\"1997\",2191781.22394\n\"Sub-Saharan Africa\",\"1997\",2983497.77168967\n\"Europe &amp; Central Asia\",\"1997\",9387364.327817\n\"Middle East &amp; North Africa\",\"1997\",1597246.51175\n\"East Asia &amp; Pacific\",\"1997\",15007501.0173434\n\"North America\",\"1997\",7414483.15\n\"Latin America &amp; Caribbean\",\"1998\",4438787.197548\n\"South Asia\",\"1998\",2197253.576417\n\"Sub-Saharan Africa\",\"1998\",5549287.408636\n\"Europe &amp; Central Asia\",\"1998\",10186397.972339\n\"Middle East &amp; North Africa\",\"1998\",1666429.53646\n\"East Asia &amp; Pacific\",\"1998\",10947013.4169973\n\"North America\",\"1998\",7878564.928286\n\"Latin America &amp; Caribbean\",\"1999\",3668582.318744\n\"South Asia\",\"1999\",2423794.0679\n\"Sub-Saharan Africa\",\"1999\",4717141.569615\n\"Europe &amp; Central Asia\",\"1999\",9091970.760931\n\"Middle East &amp; North Africa\",\"1999\",1737341.05945\n\"East Asia &amp; Pacific\",\"1999\",10423458.6717701\n\"North America\",\"1999\",7630224.093795\n\"Latin America &amp; Caribbean\",\"2000\",3176114.812005\n\"South Asia\",\"2000\",2338907.99906\n\"Sub-Saharan Africa\",\"2000\",4807543.047722\n\"Europe &amp; Central Asia\",\"2000\",9447828.22005285\n\"Middle East &amp; North Africa\",\"2000\",1804578.0900923\n\"East Asia &amp; Pacific\",\"2000\",10013315.3087233\n\"North America\",\"2000\",7730285.771347\n\"Latin America &amp; Caribbean\",\"2001\",3147005.294577\n\"South Asia\",\"2001\",2335410.91646\n\"Sub-Saharan Africa\",\"2001\",4482776.483121\n\"Europe &amp; Central Asia\",\"2001\",9327313.4684137\n\"Middle East &amp; North Africa\",\"2001\",1860773.43822762\n\"East Asia &amp; Pacific\",\"2001\",10510196.8612809\n\"North America\",\"2001\",7540280.171383\n\"Latin America &amp; Caribbean\",\"2002\",3470243.104166\n\"South Asia\",\"2002\",2385992.01329\n\"Sub-Saharan Africa\",\"2002\",4514694.747797\n\"Europe &amp; Central Asia\",\"2002\",9734665.292584\n\"Middle East &amp; North Africa\",\"2002\",1934671.5451265\n\"East Asia &amp; Pacific\",\"2002\",11859213.5411975\n\"North America\",\"2002\",7891000.046286\n\"Latin America &amp; Caribbean\",\"2003\",3722930.826768\n\"South Asia\",\"2003\",2465093.40966\n\"Sub-Saharan Africa\",\"2003\",5002466.633421\n\"Europe &amp; Central Asia\",\"2003\",10416468.166754\n\"Middle East &amp; North Africa\",\"2003\",2022518.10926\n\"East Asia &amp; Pacific\",\"2003\",11615675.3389264\n\"North America\",\"2003\",7943171.252595\n\"Latin America &amp; Caribbean\",\"2004\",4136822.016211\n\"South Asia\",\"2004\",2600816.45369\n\"Sub-Saharan Africa\",\"2004\",4624593.801604\n\"Europe &amp; Central Asia\",\"2004\",9309384.808366\n\"Middle East &amp; North Africa\",\"2004\",1768211.23102\n\"East Asia &amp; Pacific\",\"2004\",13250183.3428604\n\"North America\",\"2004\",8285000.237514\n\"Latin America &amp; Caribbean\",\"2005\",4714765.484995\n\"South Asia\",\"2005\",2642160.94491\n\"Sub-Saharan Africa\",\"2005\",5287376.950843\n\"Europe &amp; Central Asia\",\"2005\",9393741.3576105\n\"Middle East &amp; North Africa\",\"2005\",1849848.52824\n\"East Asia &amp; Pacific\",\"2005\",13591565.2822011\n\"North America\",\"2005\",8033191.896357\n\"Latin America &amp; Caribbean\",\"2006\",3779499.495899\n\"South Asia\",\"2006\",2775996.8068\n\"Sub-Saharan Africa\",\"2006\",5001274.061581\n\"Europe &amp; Central Asia\",\"2006\",9694909.38815\n\"Middle East &amp; North Africa\",\"2006\",1940963.14882\n\"East Asia &amp; Pacific\",\"2006\",15777883.4843208\n\"North America\",\"2006\",7889609.965297\n\"Latin America &amp; Caribbean\",\"2007\",5097240.324447\n\"South Asia\",\"2007\",2956095.05607\n\"Sub-Saharan Africa\",\"2007\",5448102.988914\n\"Europe &amp; Central Asia\",\"2007\",9541145.440984\n\"Middle East &amp; North Africa\",\"2007\",2417204.26952\n\"East Asia &amp; Pacific\",\"2007\",15021845.0492936\n\"North America\",\"2007\",8021018.55\n\"Latin America &amp; Caribbean\",\"2008\",3739497.543419\n\"South Asia\",\"2008\",3019145.33293\n\"Sub-Saharan Africa\",\"2008\",4754877.685087\n\"Europe &amp; Central Asia\",\"2008\",9884410.9990027\n\"Middle East &amp; North Africa\",\"2008\",1833234.30531\n\"East Asia &amp; Pacific\",\"2008\",15405671.9122623\n\"North America\",\"2008\",7557917.2\n\"Latin America &amp; Caribbean\",\"2009\",3362268.01637627\n\"South Asia\",\"2009\",3186193.19951174\n\"Sub-Saharan Africa\",\"2009\",4279677.85053037\n\"Europe &amp; Central Asia\",\"2009\",9020106.60577823\n\"Middle East &amp; North Africa\",\"2009\",1869692.10124587\n\"East Asia &amp; Pacific\",\"2009\",16626977.2361325\n\"North America\",\"2009\",7354493.86941466\n\"Latin America &amp; Caribbean\",\"2010\",5052727.65148622\n\"South Asia\",\"2010\",3386371.56460753\n\"Sub-Saharan Africa\",\"2010\",4558259.71022821\n\"Europe &amp; Central Asia\",\"2010\",9271012.66558048\n\"Middle East &amp; North Africa\",\"2010\",1480798.24056302\n\"East Asia &amp; Pacific\",\"2010\",16649842.7395083\n\"North America\",\"2010\",7478081.29598439\n\"Latin America &amp; Caribbean\",\"2011\",5667496.31418988\n\"South Asia\",\"2011\",3456044.02136962\n\"Sub-Saharan Africa\",\"2011\",4573970.09504224\n\"Europe &amp; Central Asia\",\"2011\",9372189.06816827\n\"Middle East &amp; North Africa\",\"2011\",2039856.34164361\n\"East Asia &amp; Pacific\",\"2011\",17956259.7562097\n\"North America\",\"2011\",7605750.83462879\n\"Latin America &amp; Caribbean\",\"2012\",5746908.25216716\n\"South Asia\",\"2012\",3630441.57896087\n\"Sub-Saharan Africa\",\"2012\",4601155.11108355\n\"Europe &amp; Central Asia\",\"2012\",9398206.52377517\n\"Middle East &amp; North Africa\",\"2012\",1464934.5037815\n\"East Asia &amp; Pacific\",\"2012\",18497062.2155272\n\"North America\",\"2012\",7371537.23960903"
+    },
+    {
+      "name": ".0",
+      "source": ".0_flat",
+      "transform": [
+        {
+          "type": "treefacet",
+          "keys": [
+            "data.Year"
+          ]
+        }
+      ]
+    },
+    {
+      "name": ".0/group_by1/arrange2_flat",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "Emissions": "number"
+        }
+      },
+      "values": "\"Region\",\"Year\",\"Emissions\"\n\"Latin America &amp; Caribbean\",\"1970\",2454614.93264852\n\"Latin America &amp; Caribbean\",\"1971\",2058777.36311447\n\"Latin America &amp; Caribbean\",\"1972\",2318632.5277264\n\"Latin America &amp; Caribbean\",\"1973\",2185736.0610613\n\"Latin America &amp; Caribbean\",\"1974\",2316630.0882825\n\"Latin America &amp; Caribbean\",\"1975\",2492540.83513397\n\"Latin America &amp; Caribbean\",\"1976\",2749485.15328917\n\"Latin America &amp; Caribbean\",\"1977\",2481305.10221322\n\"Latin America &amp; Caribbean\",\"1978\",2744834.35323666\n\"Latin America &amp; Caribbean\",\"1979\",2907317.85280283\n\"Latin America &amp; Caribbean\",\"1980\",3040379.48355228\n\"Latin America &amp; Caribbean\",\"1981\",2928972.19127242\n\"Latin America &amp; Caribbean\",\"1982\",3049425.00983303\n\"Latin America &amp; Caribbean\",\"1983\",3031186.14142961\n\"Latin America &amp; Caribbean\",\"1984\",2776182.20925395\n\"Latin America &amp; Caribbean\",\"1985\",2857616.67468712\n\"Latin America &amp; Caribbean\",\"1986\",2982878.58245142\n\"Latin America &amp; Caribbean\",\"1987\",3287880.83329619\n\"Latin America &amp; Caribbean\",\"1988\",3106319.85547987\n\"Latin America &amp; Caribbean\",\"1989\",3158259.0746659\n\"Latin America &amp; Caribbean\",\"1990\",3365946.00565312\n\"Latin America &amp; Caribbean\",\"1991\",3321120.36119493\n\"Latin America &amp; Caribbean\",\"1992\",3429705.80431917\n\"Latin America &amp; Caribbean\",\"1993\",3622811.98197386\n\"Latin America &amp; Caribbean\",\"1994\",3214429.44807307\n\"Latin America &amp; Caribbean\",\"1995\",3397823.060557\n\"Latin America &amp; Caribbean\",\"1996\",3511070.686842\n\"Latin America &amp; Caribbean\",\"1997\",3592820.842732\n\"Latin America &amp; Caribbean\",\"1998\",4438787.197548\n\"Latin America &amp; Caribbean\",\"1999\",3668582.318744\n\"Latin America &amp; Caribbean\",\"2000\",3176114.812005\n\"Latin America &amp; Caribbean\",\"2001\",3147005.294577\n\"Latin America &amp; Caribbean\",\"2002\",3470243.104166\n\"Latin America &amp; Caribbean\",\"2003\",3722930.826768\n\"Latin America &amp; Caribbean\",\"2004\",4136822.016211\n\"Latin America &amp; Caribbean\",\"2005\",4714765.484995\n\"Latin America &amp; Caribbean\",\"2006\",3779499.495899\n\"Latin America &amp; Caribbean\",\"2007\",5097240.324447\n\"Latin America &amp; Caribbean\",\"2008\",3739497.543419\n\"Latin America &amp; Caribbean\",\"2009\",3362268.01637627\n\"Latin America &amp; Caribbean\",\"2010\",5052727.65148622\n\"Latin America &amp; Caribbean\",\"2011\",5667496.31418988\n\"Latin America &amp; Caribbean\",\"2012\",5746908.25216716\n\"South Asia\",\"1970\",997942.6068936\n\"South Asia\",\"1971\",1001722.7983924\n\"South Asia\",\"1972\",1016822.6875269\n\"South Asia\",\"1973\",1028997.7411218\n\"South Asia\",\"1974\",1057788.0885613\n\"South Asia\",\"1975\",1095576.622564\n\"South Asia\",\"1976\",1121432.5082829\n\"South Asia\",\"1977\",1149113.9830474\n\"South Asia\",\"1978\",1162553.4056524\n\"South Asia\",\"1979\",1199829.8933097\n\"South Asia\",\"1980\",1221847.08768\n\"South Asia\",\"1981\",1278828.60669\n\"South Asia\",\"1982\",1317620.29117\n\"South Asia\",\"1983\",1364060.89736\n\"South Asia\",\"1984\",1432601.054254\n\"South Asia\",\"1985\",1459375.180857\n\"South Asia\",\"1986\",1524697.558255\n\"South Asia\",\"1987\",1527153.41761\n\"South Asia\",\"1988\",1648643.114767\n\"South Asia\",\"1989\",1715009.02168\n\"South Asia\",\"1990\",1743930.29699\n\"South Asia\",\"1991\",1802558.97021\n\"South Asia\",\"1992\",1856479.79733\n\"South Asia\",\"1993\",1903250.71922\n\"South Asia\",\"1994\",1972951.080284\n\"South Asia\",\"1995\",2058404.803803\n\"South Asia\",\"1996\",2131356.679316\n\"South Asia\",\"1997\",2191781.22394\n\"South Asia\",\"1998\",2197253.576417\n\"South Asia\",\"1999\",2423794.0679\n\"South Asia\",\"2000\",2338907.99906\n\"South Asia\",\"2001\",2335410.91646\n\"South Asia\",\"2002\",2385992.01329\n\"South Asia\",\"2003\",2465093.40966\n\"South Asia\",\"2004\",2600816.45369\n\"South Asia\",\"2005\",2642160.94491\n\"South Asia\",\"2006\",2775996.8068\n\"South Asia\",\"2007\",2956095.05607\n\"South Asia\",\"2008\",3019145.33293\n\"South Asia\",\"2009\",3186193.19951174\n\"South Asia\",\"2010\",3386371.56460753\n\"South Asia\",\"2011\",3456044.02136962\n\"South Asia\",\"2012\",3630441.57896087\n\"Sub-Saharan Africa\",\"1970\",3145184.86117467\n\"Sub-Saharan Africa\",\"1971\",2264050.09442867\n\"Sub-Saharan Africa\",\"1972\",2359208.44157367\n\"Sub-Saharan Africa\",\"1973\",2529215.81994167\n\"Sub-Saharan Africa\",\"1974\",2264326.43427233\n\"Sub-Saharan Africa\",\"1975\",2509688.292449\n\"Sub-Saharan Africa\",\"1976\",2394647.95228267\n\"Sub-Saharan Africa\",\"1977\",2666298.56865933\n\"Sub-Saharan Africa\",\"1978\",2648809.62819933\n\"Sub-Saharan Africa\",\"1979\",3230505.837652\n\"Sub-Saharan Africa\",\"1980\",3026521.114579\n\"Sub-Saharan Africa\",\"1981\",2696401.098013\n\"Sub-Saharan Africa\",\"1982\",2969640.519741\n\"Sub-Saharan Africa\",\"1983\",2930214.636897\n\"Sub-Saharan Africa\",\"1984\",2266117.483632\n\"Sub-Saharan Africa\",\"1985\",2241454.45352233\n\"Sub-Saharan Africa\",\"1986\",2166331.67328233\n\"Sub-Saharan Africa\",\"1987\",2646127.17924933\n\"Sub-Saharan Africa\",\"1988\",2141000.114427\n\"Sub-Saharan Africa\",\"1989\",2355342.73398167\n\"Sub-Saharan Africa\",\"1990\",3394980.0010204\n\"Sub-Saharan Africa\",\"1991\",2944893.67651133\n\"Sub-Saharan Africa\",\"1992\",3987161.01683167\n\"Sub-Saharan Africa\",\"1993\",2884391.71601833\n\"Sub-Saharan Africa\",\"1994\",3115165.033527\n\"Sub-Saharan Africa\",\"1995\",3242554.91359\n\"Sub-Saharan Africa\",\"1996\",3028219.84851767\n\"Sub-Saharan Africa\",\"1997\",2983497.77168967\n\"Sub-Saharan Africa\",\"1998\",5549287.408636\n\"Sub-Saharan Africa\",\"1999\",4717141.569615\n\"Sub-Saharan Africa\",\"2000\",4807543.047722\n\"Sub-Saharan Africa\",\"2001\",4482776.483121\n\"Sub-Saharan Africa\",\"2002\",4514694.747797\n\"Sub-Saharan Africa\",\"2003\",5002466.633421\n\"Sub-Saharan Africa\",\"2004\",4624593.801604\n\"Sub-Saharan Africa\",\"2005\",5287376.950843\n\"Sub-Saharan Africa\",\"2006\",5001274.061581\n\"Sub-Saharan Africa\",\"2007\",5448102.988914\n\"Sub-Saharan Africa\",\"2008\",4754877.685087\n\"Sub-Saharan Africa\",\"2009\",4279677.85053037\n\"Sub-Saharan Africa\",\"2010\",4558259.71022821\n\"Sub-Saharan Africa\",\"2011\",4573970.09504224\n\"Sub-Saharan Africa\",\"2012\",4601155.11108355\n\"Europe &amp; Central Asia\",\"1970\",9050460.7336681\n\"Europe &amp; Central Asia\",\"1971\",9101331.92898\n\"Europe &amp; Central Asia\",\"1972\",9497811.58801\n\"Europe &amp; Central Asia\",\"1973\",9876616.1076\n\"Europe &amp; Central Asia\",\"1974\",9936637.46466\n\"Europe &amp; Central Asia\",\"1975\",9990060.03061\n\"Europe &amp; Central Asia\",\"1976\",10448403.81094\n\"Europe &amp; Central Asia\",\"1977\",10543517.71111\n\"Europe &amp; Central Asia\",\"1978\",10785290.46998\n\"Europe &amp; Central Asia\",\"1979\",11058145.23097\n\"Europe &amp; Central Asia\",\"1980\",10961774.78297\n\"Europe &amp; Central Asia\",\"1981\",10771439.8300594\n\"Europe &amp; Central Asia\",\"1982\",10676427.8517403\n\"Europe &amp; Central Asia\",\"1983\",10692610.0898986\n\"Europe &amp; Central Asia\",\"1984\",10760570.2876465\n\"Europe &amp; Central Asia\",\"1985\",10878536.905961\n\"Europe &amp; Central Asia\",\"1986\",11048534.863745\n\"Europe &amp; Central Asia\",\"1987\",11137126.08167\n\"Europe &amp; Central Asia\",\"1988\",11290181.141731\n\"Europe &amp; Central Asia\",\"1989\",11306247.066262\n\"Europe &amp; Central Asia\",\"1990\",11706235.634271\n\"Europe &amp; Central Asia\",\"1991\",11301662.497577\n\"Europe &amp; Central Asia\",\"1992\",10616013.88373\n\"Europe &amp; Central Asia\",\"1993\",10265604.238899\n\"Europe &amp; Central Asia\",\"1994\",9748546.017587\n\"Europe &amp; Central Asia\",\"1995\",9677678.517652\n\"Europe &amp; Central Asia\",\"1996\",9814552.89112\n\"Europe &amp; Central Asia\",\"1997\",9387364.327817\n\"Europe &amp; Central Asia\",\"1998\",10186397.972339\n\"Europe &amp; Central Asia\",\"1999\",9091970.760931\n\"Europe &amp; Central Asia\",\"2000\",9447828.22005285\n\"Europe &amp; Central Asia\",\"2001\",9327313.4684137\n\"Europe &amp; Central Asia\",\"2002\",9734665.292584\n\"Europe &amp; Central Asia\",\"2003\",10416468.166754\n\"Europe &amp; Central Asia\",\"2004\",9309384.808366\n\"Europe &amp; Central Asia\",\"2005\",9393741.3576105\n\"Europe &amp; Central Asia\",\"2006\",9694909.38815\n\"Europe &amp; Central Asia\",\"2007\",9541145.440984\n\"Europe &amp; Central Asia\",\"2008\",9884410.9990027\n\"Europe &amp; Central Asia\",\"2009\",9020106.60577823\n\"Europe &amp; Central Asia\",\"2010\",9271012.66558048\n\"Europe &amp; Central Asia\",\"2011\",9372189.06816827\n\"Europe &amp; Central Asia\",\"2012\",9398206.52377517\n\"Middle East &amp; North Africa\",\"1970\",634578.748566\n\"Middle East &amp; North Africa\",\"1971\",669140.808619\n\"Middle East &amp; North Africa\",\"1972\",733877.172219\n\"Middle East &amp; North Africa\",\"1973\",830530.060623\n\"Middle East &amp; North Africa\",\"1974\",831556.827571\n\"Middle East &amp; North Africa\",\"1975\",829704.757689\n\"Middle East &amp; North Africa\",\"1976\",943614.995445\n\"Middle East &amp; North Africa\",\"1977\",966944.54795\n\"Middle East &amp; North Africa\",\"1978\",993040.72488\n\"Middle East &amp; North Africa\",\"1979\",1018561.41968\n\"Middle East &amp; North Africa\",\"1980\",1016408.63292\n\"Middle East &amp; North Africa\",\"1981\",932039.53034\n\"Middle East &amp; North Africa\",\"1982\",1009981.69612\n\"Middle East &amp; North Africa\",\"1983\",1048866.27062\n\"Middle East &amp; North Africa\",\"1984\",1027321.88011\n\"Middle East &amp; North Africa\",\"1985\",894675.92733\n\"Middle East &amp; North Africa\",\"1986\",918471.19124\n\"Middle East &amp; North Africa\",\"1987\",922611.62761\n\"Middle East &amp; North Africa\",\"1988\",967235.04095\n\"Middle East &amp; North Africa\",\"1989\",1018313.39782\n\"Middle East &amp; North Africa\",\"1990\",1012934.9441797\n\"Middle East &amp; North Africa\",\"1991\",1094897.162717\n\"Middle East &amp; North Africa\",\"1992\",1100963.15052\n\"Middle East &amp; North Africa\",\"1993\",1150534.21904\n\"Middle East &amp; North Africa\",\"1994\",1214656.74479\n\"Middle East &amp; North Africa\",\"1995\",1526488.21047\n\"Middle East &amp; North Africa\",\"1996\",1572334.03918\n\"Middle East &amp; North Africa\",\"1997\",1597246.51175\n\"Middle East &amp; North Africa\",\"1998\",1666429.53646\n\"Middle East &amp; North Africa\",\"1999\",1737341.05945\n\"Middle East &amp; North Africa\",\"2000\",1804578.0900923\n\"Middle East &amp; North Africa\",\"2001\",1860773.43822762\n\"Middle East &amp; North Africa\",\"2002\",1934671.5451265\n\"Middle East &amp; North Africa\",\"2003\",2022518.10926\n\"Middle East &amp; North Africa\",\"2004\",1768211.23102\n\"Middle East &amp; North Africa\",\"2005\",1849848.52824\n\"Middle East &amp; North Africa\",\"2006\",1940963.14882\n\"Middle East &amp; North Africa\",\"2007\",2417204.26952\n\"Middle East &amp; North Africa\",\"2008\",1833234.30531\n\"Middle East &amp; North Africa\",\"2009\",1869692.10124587\n\"Middle East &amp; North Africa\",\"2010\",1480798.24056302\n\"Middle East &amp; North Africa\",\"2011\",2039856.34164361\n\"Middle East &amp; North Africa\",\"2012\",1464934.5037815\n\"East Asia &amp; Pacific\",\"1970\",4836268.16610639\n\"East Asia &amp; Pacific\",\"1971\",4561698.75553726\n\"East Asia &amp; Pacific\",\"1972\",5332759.26574393\n\"East Asia &amp; Pacific\",\"1973\",5485589.22376541\n\"East Asia &amp; Pacific\",\"1974\",5029101.01237918\n\"East Asia &amp; Pacific\",\"1975\",5202145.37341496\n\"East Asia &amp; Pacific\",\"1976\",5496438.36434128\n\"East Asia &amp; Pacific\",\"1977\",6399301.70159839\n\"East Asia &amp; Pacific\",\"1978\",6423486.31316114\n\"East Asia &amp; Pacific\",\"1979\",6633707.83030681\n\"East Asia &amp; Pacific\",\"1980\",6827762.70572622\n\"East Asia &amp; Pacific\",\"1981\",6524060.40571727\n\"East Asia &amp; Pacific\",\"1982\",8528511.26893001\n\"East Asia &amp; Pacific\",\"1983\",7986798.65192864\n\"East Asia &amp; Pacific\",\"1984\",7193049.57667078\n\"East Asia &amp; Pacific\",\"1985\",7153365.8050698\n\"East Asia &amp; Pacific\",\"1986\",7807040.23502663\n\"East Asia &amp; Pacific\",\"1987\",8821911.68556443\n\"East Asia &amp; Pacific\",\"1988\",8096084.70435707\n\"East Asia &amp; Pacific\",\"1989\",8088034.84479697\n\"East Asia &amp; Pacific\",\"1990\",9056633.0587611\n\"East Asia &amp; Pacific\",\"1991\",10239702.8075636\n\"East Asia &amp; Pacific\",\"1992\",10755073.1502569\n\"East Asia &amp; Pacific\",\"1993\",10050043.2010268\n\"East Asia &amp; Pacific\",\"1994\",11053907.5975045\n\"East Asia &amp; Pacific\",\"1995\",10844899.0602238\n\"East Asia &amp; Pacific\",\"1996\",10794822.0393445\n\"East Asia &amp; Pacific\",\"1997\",15007501.0173434\n\"East Asia &amp; Pacific\",\"1998\",10947013.4169973\n\"East Asia &amp; Pacific\",\"1999\",10423458.6717701\n\"East Asia &amp; Pacific\",\"2000\",10013315.3087233\n\"East Asia &amp; Pacific\",\"2001\",10510196.8612809\n\"East Asia &amp; Pacific\",\"2002\",11859213.5411975\n\"East Asia &amp; Pacific\",\"2003\",11615675.3389264\n\"East Asia &amp; Pacific\",\"2004\",13250183.3428604\n\"East Asia &amp; Pacific\",\"2005\",13591565.2822011\n\"East Asia &amp; Pacific\",\"2006\",15777883.4843208\n\"East Asia &amp; Pacific\",\"2007\",15021845.0492936\n\"East Asia &amp; Pacific\",\"2008\",15405671.9122623\n\"East Asia &amp; Pacific\",\"2009\",16626977.2361325\n\"East Asia &amp; Pacific\",\"2010\",16649842.7395083\n\"East Asia &amp; Pacific\",\"2011\",17956259.7562097\n\"East Asia &amp; Pacific\",\"2012\",18497062.2155272\n\"North America\",\"1970\",5895826.525182\n\"North America\",\"1971\",5953199.317507\n\"North America\",\"1972\",6202077.955556\n\"North America\",\"1973\",6433903.382676\n\"North America\",\"1974\",6295263.05\n\"North America\",\"1975\",6069698.792523\n\"North America\",\"1976\",6449398.88\n\"North America\",\"1977\",6623394.688008\n\"North America\",\"1978\",6605082.220219\n\"North America\",\"1979\",6792033.97\n\"North America\",\"1980\",6608490.846422\n\"North America\",\"1981\",6530407.246054\n\"North America\",\"1982\",6111325.987286\n\"North America\",\"1983\",6098981.315036\n\"North America\",\"1984\",6331562.955537\n\"North America\",\"1985\",6354321.231181\n\"North America\",\"1986\",6297473.249455\n\"North America\",\"1987\",6315318.578642\n\"North America\",\"1988\",6809717.182722\n\"North America\",\"1989\",7016378.804785\n\"North America\",\"1990\",6745431.462347\n\"North America\",\"1991\",6700374.787884\n\"North America\",\"1992\",6756637.700133\n\"North America\",\"1993\",6938768.985788\n\"North America\",\"1994\",7182693.311126\n\"North America\",\"1995\",7201818.999905\n\"North America\",\"1996\",7276980.576508\n\"North America\",\"1997\",7414483.15\n\"North America\",\"1998\",7878564.928286\n\"North America\",\"1999\",7630224.093795\n\"North America\",\"2000\",7730285.771347\n\"North America\",\"2001\",7540280.171383\n\"North America\",\"2002\",7891000.046286\n\"North America\",\"2003\",7943171.252595\n\"North America\",\"2004\",8285000.237514\n\"North America\",\"2005\",8033191.896357\n\"North America\",\"2006\",7889609.965297\n\"North America\",\"2007\",8021018.55\n\"North America\",\"2008\",7557917.2\n\"North America\",\"2009\",7354493.86941466\n\"North America\",\"2010\",7478081.29598439\n\"North America\",\"2011\",7605750.83462879\n\"North America\",\"2012\",7371537.23960903"
+    },
+    {
+      "name": ".0/group_by1/arrange2",
+      "source": ".0/group_by1/arrange2_flat",
+      "transform": [
+        {
+          "type": "treefacet",
+          "keys": [
+            "data.Region"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "scale/fill",
+      "format": {
+        "type": "csv",
+        "parse": {}
+      },
+      "values": "\"domain\"\n\"Latin America &amp; Caribbean\"\n\"South Asia\"\n\"Sub-Saharan Africa\"\n\"Europe &amp; Central Asia\"\n\"Middle East &amp; North Africa\"\n\"East Asia &amp; Pacific\"\n\"North America\""
+    },
+    {
+      "name": "scale/size",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "domain": "number"
+        }
+      },
+      "values": "\"domain\"\n1\n1"
+    },
+    {
+      "name": "scale/stroke",
+      "format": {
+        "type": "csv",
+        "parse": {}
+      },
+      "values": "\"domain\"\n\"Latin America &amp; Caribbean\"\n\"South Asia\"\n\"Sub-Saharan Africa\"\n\"Europe &amp; Central Asia\"\n\"Middle East &amp; North Africa\"\n\"East Asia &amp; Pacific\"\n\"North America\""
+    },
+    {
+      "name": "scale/x",
+      "format": {
+        "type": "csv",
+        "parse": {}
+      },
+      "values": "\"domain\"\n\"1970\"\n\"1971\"\n\"1972\"\n\"1973\"\n\"1974\"\n\"1975\"\n\"1976\"\n\"1977\"\n\"1978\"\n\"1979\"\n\"1980\"\n\"1981\"\n\"1982\"\n\"1983\"\n\"1984\"\n\"1985\"\n\"1986\"\n\"1987\"\n\"1988\"\n\"1989\"\n\"1990\"\n\"1991\"\n\"1992\"\n\"1993\"\n\"1994\"\n\"1995\"\n\"1996\"\n\"1997\"\n\"1998\"\n\"1999\"\n\"2000\"\n\"2001\"\n\"2002\"\n\"2003\"\n\"2004\"\n\"2005\"\n\"2006\"\n\"2007\"\n\"2008\"\n\"2009\"\n\"2010\"\n\"2011\"\n\"2012\""
+    },
+    {
+      "name": "scale/y",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "domain": "number"
+        }
+      },
+      "values": "\"domain\"\n-258545.424782058\n19390186.3888752"
+    }
+  ],
+  "scales": [
+    {
+      "name": "fill",
+      "type": "ordinal",
+      "domain": {
+        "data": "scale/fill",
+        "field": "data.domain"
+      },
+      "points": true,
+      "sort": false,
+      "range": "category10"
+    },
+    {
+      "name": "size",
+      "domain": {
+        "data": "scale/size",
+        "field": "data.domain"
+      },
+      "zero": false,
+      "nice": false,
+      "clamp": false,
+      "range": [20, 100]
+    },
+    {
+      "name": "stroke",
+      "type": "ordinal",
+      "domain": {
+        "data": "scale/stroke",
+        "field": "data.domain"
+      },
+      "points": true,
+      "sort": false,
+      "range": "category10"
+    },
+    {
+      "name": "x",
+      "type": "ordinal",
+      "domain": {
+        "data": "scale/x",
+        "field": "data.domain"
+      },
+      "points": true,
+      "sort": false,
+      "range": "width",
+      "padding": 0.5
+    },
+    {
+      "name": "y",
+      "domain": {
+        "data": "scale/y",
+        "field": "data.domain"
+      },
+      "zero": false,
+      "nice": false,
+      "clamp": false,
+      "range": "height"
+    }
+  ],
+  "marks": [
+    {
+      "type": "group",
+      "from": {
+        "data": ".0/group_by1/arrange2"
+      },
+      "marks": [
+        {
+          "type": "line",
+          "properties": {
+            "update": {
+              "stroke": {
+                "scale": "stroke",
+                "field": "data.Region"
+              },
+              "x": {
+                "scale": "x",
+                "field": "data.Year"
+              },
+              "y": {
+                "scale": "y",
+                "field": "data.Emissions"
+              }
+            },
+            "ggvis": {
+              "data": {
+                "value": ".0/group_by1/arrange2"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "from": {
+        "data": ".0"
+      },
+      "marks": [
+        {
+          "type": "symbol",
+          "properties": {
+            "update": {
+              "stroke": {
+                "scale": "stroke",
+                "field": "data.Region"
+              },
+              "x": {
+                "scale": "x",
+                "field": "data.Year"
+              },
+              "y": {
+                "scale": "y",
+                "field": "data.Emissions"
+              },
+              "size": {
+                "scale": "size",
+                "value": 1
+              },
+              "fill": {
+                "scale": "fill",
+                "field": "data.Region"
+              },
+              "fillOpacity": {
+                "value": 0.2
+              }
+            },
+            "ggvis": {
+              "data": {
+                "value": ".0"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "orient": "right",
+      "fill": "fill",
+      "title": "Region"
+    },
+    {
+      "orient": "right",
+      "size": "size"
+    },
+    {
+      "orient": "right",
+      "stroke": "stroke",
+      "title": "Region"
+    }
+  ],
+  "axes": [
+    {
+      "type": "x",
+      "scale": "x",
+      "orient": "bottom",
+      "values": [1970, 1975, 1980, 1985, 1990, 1995, 2000, 2005, 2010],
+      "layer": "back",
+      "grid": true,
+      "title": "Year"
+    },
+    {
+      "type": "y",
+      "scale": "y",
+      "orient": "left",
+      "title": "Emissions (kt of CO2 equivalent)",
+      "titleOffset": 75,
+      "layer": "back",
+      "grid": true
+    }
+  ],
+  "padding": null,
+  "ggvis_opts": {
+    "width": 600,
+    "height": 400,
+    "keep_aspect": false,
+    "resizable": true,
+    "padding": {},
+    "duration": 250,
+    "renderer": "svg",
+    "hover_duration": 0
+  },
+  "handlers": null
+};
+ggvis.getPlot("plot_908550715").parseSpec(plot_908550715_spec);
+</script>
+</body>
+</html>

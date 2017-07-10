@@ -1,0 +1,7 @@
+"0","l <- ""https://www.ncdc.noaa.gov/cag/time-series/global/globe/land_ocean/ytd/12/1880-2016.csv"""
+"0","tempt <- read_csv(l, skip = 4,"
+"0","                  col_types = cols("
+"0","                    Year = col_character(),"
+"0","                    Value = col_double()"
+"0","                  ))"
+"0","tempt"

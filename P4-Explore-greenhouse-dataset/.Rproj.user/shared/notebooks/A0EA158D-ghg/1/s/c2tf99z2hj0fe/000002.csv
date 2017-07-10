@@ -1,0 +1,5 @@
+"0","wb_pop <- WDI(country = ""all"","
+"0","               indicator = ""SP.POP.TOTL"","
+"0","               start = 1970,"
+"0","               end = 2012,"
+"0","               extra = TRUE)"

@@ -1,0 +1,4 @@
+"0","ghg_metadata1 <- ghg_metadata %>% "
+"0","  select(`Country Code`:IncomeGroup) %>% "
+"0","  filter(!(is.na(Region) & `Country Code` != ""WLD""))"
+"0","ghg_metadata1"

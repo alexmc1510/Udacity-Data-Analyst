@@ -1,0 +1,35 @@
+"0","# From http://data.worldbank.org/indicator/EN.ATM.GHGT.KT.CE"
+"0","# Unzip the downloaded file and stored and inside data folder"
+"0","ghg <- read_csv(""data/API_EN.ATM.GHGT.KT.CE_DS2_en_csv_v2.csv"", skip = 4)"
+"2","Missing column names filled in: 'X62' [62]"
+"2","Parsed with column specification:
+cols(
+  .default = col_double(),
+  `Country Name` = col_character(),
+  `Country Code` = col_character(),
+  `Indicator Name` = col_character(),
+  `Indicator Code` = col_character(),
+  `1960` = col_character(),
+  `1961` = col_character(),
+  `1962` = col_character(),
+  `1963` = col_character(),
+  `1964` = col_character(),
+  `1965` = col_character(),
+  `1966` = col_character(),
+  `1967` = col_character(),
+  `1968` = col_character(),
+  `1969` = col_character(),
+  `2013` = col_character(),
+  `2014` = col_character(),
+  `2015` = col_character(),
+  `2016` = col_character(),
+  X62 = col_character()
+)
+"
+"2","See spec(...) for full column specifications.
+"
+"0","ghg_metadata <- read_csv(""data/Metadata_Country_API_EN.ATM.GHGT.KT.CE_DS2_en_csv_v2.csv"","
+"0","                         col_types = cols("
+"0","                           IncomeGroup = col_factor(levels = NULL),"
+"0","                           Region = col_factor(levels = NULL)))"
+"2","Missing column names filled in: 'X6' [6]"

@@ -1,0 +1,6 @@
+"0","ghg_per_capita <- ghg_complete %>% "
+"0","  filter(!Country == ""World"") %>% "
+"0","  inner_join(wb_pop, by = c(""ISO_A3"" = ""iso3c"", ""Year"" = ""year"")) %>% "
+"0","  mutate(emissions_tonnes_per_capita = round(Emissions*1000/SP.POP.TOTL, 1)) %>% "
+"0","  select(Country, Year, Emissions, SP.POP.TOTL, emissions_tonnes_per_capita, everything())"
+"0","ghg_per_capita"

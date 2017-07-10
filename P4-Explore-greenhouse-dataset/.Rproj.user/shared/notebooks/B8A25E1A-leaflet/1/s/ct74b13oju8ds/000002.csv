@@ -1,0 +1,2 @@
+"0","m %>% addLegend(pal = pal, values = countries_plus_ghg[[""EN.ATM.GHGT.KT.CE""]], opacity = 0.7, title = NULL,"
+"0","  position = ""bottomright"")"

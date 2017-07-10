@@ -1,0 +1,674 @@
+---
+title: "Greenhouse gas emissions"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.height = 4,
+  fig.width = 8,
+  fig.align = "center"
+  )
+```
+
+## 1. Introduction
+
+"During 2016, Earth's globally averaged surface temperature was 0.94$^{\circ}$C higher than the twentieth-century century average. All 16 years of the twenty-first century rank among the 17 warmest years on record." - [National Oceanic and Atmospheric Administration (NOAA)](https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature)
+
+If you know me I deeply care about the health of our planet. The biggest threat our civilization and the life of planet right now is global warming. According to Intergovernmental Panel on Climate Change - "Scientific evidence for warming of the climate system is unequivocal". "[Majority of Scientists](http://www.ipcc.ch/report/ar5/wg2/) agree that rising temperatures will fuel longer and hotter heat waves, drought, crop failures, powerful hurricanes, rising sea levels, flooding of coastal cities, mass migration crisis and mass extinction." - [CNN](http://www.cnn.com/2017/06/01/politics/us-paris-agreement-trump/index.html). 
+
+![greenhouse_effect](images/greenhouse_effect.jpg)
+Source: [NASA](https://climate.nasa.gov/causes/)
+
+The invisible culprit - anthropogenic greenhouse gases (GHG) emissions. These gases collect in the atmosphere and absorb sunlight and solar radiation that increases the earth's temperature. The increase in greenhouse gas emissions is the major driver of climate change.
+
+In this project, I explore greenhouse gas emissions data for all the countries from  [worldbank](http://data.worldbank.org/indicator/EN.ATM.GHGT.KT.CE). We asked - which countries share a bigger share of responsibility to curb the emissions? In the process, I build a [Shiny app](https://arjan-hada.shinyapps.io/greenhouse-gas/) to interactively explore 42 years of greenhouse gas emissions data through different visualizations.
+
+## 2. Prerequisites
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(plotly)
+library(forcats)
+library(ggvis)
+library(leaflet) # for choropleth map
+library(WDI) # for choropleth map
+library(sp) # for choropleth map
+library(gridExtra)
+```
+
+## 3. Data Import
+
+### 3.1 Load the global temperature data from NOAA (National Oceanic and Atmospheric Administration)
+
+```{r}
+l <- "https://www.ncdc.noaa.gov/cag/time-series/global/globe/land_ocean/ytd/12/1880-2016.csv"
+tempt <- read_csv(l, skip = 4,
+                  col_types = cols(
+                    Year = col_character(),
+                    Value = col_double()
+                  ))
+tempt
+```
+
+
+### 3.2 Load the ghg emissions data from World bank, ghg = green house gas
+
+```{r}
+# From http://data.worldbank.org/indicator/EN.ATM.GHGT.KT.CE
+# Unzip the downloaded file and stored and inside data folder
+
+ghg <- read_csv("data/API_EN.ATM.GHGT.KT.CE_DS2_en_csv_v2.csv", skip = 4)
+ghg_metadata <- read_csv("data/Metadata_Country_API_EN.ATM.GHGT.KT.CE_DS2_en_csv_v2.csv",
+                         col_types = cols(
+                           IncomeGroup = col_factor(levels = NULL),
+                           Region = col_factor(levels = NULL)))
+```
+
+### 3.3 Print the data
+
+```{r}
+ghg
+ghg_metadata
+```
+
+## 4.Tidy the data
+### 4.1 Clean the ghg metadata
+
+There are some Country codes which are actually aggregate for several countries. For example, ARB represents aggregate for the Arab world. We will remove those country codes from the analysis.
+
+We will also drop columns SpecialNotes, TableName and an empty column X6.
+
+```{r}
+ghg_metadata1 <- ghg_metadata %>% 
+  select(`Country Code`:IncomeGroup) %>% 
+  filter(!(is.na(Region) & `Country Code` != "WLD"))
+ghg_metadata1
+```
+
+### 4.2 Prep the final tidy ghg data
+
+1. We will drop the column Indicator Name and Indicator Code from ghg data because it is constant in the dataset. Let us also drop columns which are completely NAs.
+
+2. We will inner join ghg and ghg_metadata1 on Country Code to create one single dataset.
+
+3. Year spread out across several columns are likely to be values, not variables. So we need to gather together all the columns from `1970` to `2012`.
+
+```{r}
+ghg_complete <- ghg %>% 
+  select(-(`Indicator Name`:`1969`), -(`2013`:X62)) %>% 
+  inner_join(ghg_metadata1, by = "Country Code") %>% 
+  gather(`1970`:`2012`, key = "Year", value = "Emissions") %>% 
+  rename(Country = `Country Name`, ISO_A3 = `Country Code`) 
+ghg_complete
+```
+
+4. Write the dataset to a csv file for RShiny application use
+
+```{r}
+write_csv(ghg_complete, "wb_ghg_complete.csv")
+```
+
+## 5 Transform and Visualize
+
+### 5.1 Global temperature over time
+
+```{r}
+p1 <- tempt %>% 
+  ggplot(aes(x = Year, y = Value, group = 1)) +
+  geom_point(size = 1, alpha = 0.5) +
+  geom_line() +
+  labs(title = "Global temperature over time",
+       subtitle = "Land and sea temperature anomaly relative to 20th century avg.",
+       caption = "Data source: National Oceanic and Atmospheric Administration",
+       y = "Temperature (C)" ) +
+  scale_x_discrete(breaks = seq(1880, 2016, by = 10)) +
+  geom_hline(yintercept = 0, color = "red") +
+  theme_bw() 
+ggplotly(p1)
+```
+**Figure 1. The average temperature across global land and ocean surfaces since 1880.** The red line represents the average temperature for twentieth-century (1901 - 2000). Points below the line represents years cooler than the average and points above the line represents years warmer than the average.
+
+1) We made a hattrick in setting new temperature record. 2016 was the hottest year on planet earth based on global average surface temperature. The earth was warmer by 0.94C relative to twentieth-century average.
+2) 1976 was the last year when the average surface temperature of the earth was below twentieth-century average. 
+3) All 16 years in the twenty-first century are among the 17 warmest years on record.
+
+### 5.2 The invisible culprit - Greenhouse gas emissions
+
+```{r}
+first_and_last <- ghg_complete %>% 
+  filter(Country == "World") %>% 
+  filter(Year == 1970 | Year == 2012)
+p2 <- ghg_complete %>% 
+  filter(Country == "World") %>% 
+  ggplot(aes(x = Year, y = Emissions, group = Country)) +
+  geom_point(size = 1, alpha = 0.5) +
+  geom_line() +
+  labs(title = "Total greenhouse gas emissions from earth",
+       subtitle = "Percentage increase since 1970 - 93.5",
+       caption = "Data source: World Bank",
+       y = "Emissions (kt of CO2 equivalent)" ) +
+  scale_x_discrete(breaks = seq(1970, 2012, by = 5)) +
+  theme_bw() +
+  ggrepel::geom_label_repel(aes(label = round(Emissions)), data = first_and_last)
+p2 
+```
+**Figure 2. Total greenhouse gas emissions from all the countries in the world.**
+Eleven years in a row since 2002, we produced greenhouse gases that broke the highest emissions record of twentieth-century.
+Last three years in the record (2010- 2012) every year a new greenhouse gas emission record was set.
+
+### 5.3 Which countries have contributed the most to greenhouse gas emissions ?
+
+```{r}
+p3 <- ghg_complete %>% 
+  filter(!Country == "World") %>% 
+  group_by(Country) %>% 
+  summarise(Emissions = sum(Emissions, na.rm = TRUE)) %>% 
+  arrange(desc(Emissions)) %>% 
+  do(head(.,20)) %>% 
+  ggplot(aes(x = reorder(Country, Emissions), 
+             y = Emissions)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Cumulative greenhouse gas emissions between 1970 - 2012",
+       x = "Country",
+       y = "Emissions (kt of CO2 equivalent)")  +
+  coord_flip() +
+  theme_bw() +
+  theme(axis.text.x=element_text(vjust = 0.5))
+p3
+```
+**Figure 3. Total greenhouse gas emissions from all the countries in the world.** 
+The US has been the biggest emitters followed by China, Russian Federation, Brazil and India.
+
+### 5.4 Do rich countries share a bigger responsibility for climate change?
+
+```{r}
+p4 <- ghg_complete %>% 
+  filter(!is.na(IncomeGroup)) %>% 
+  group_by(IncomeGroup) %>% 
+  summarise(Emissions = sum(Emissions, na.rm = TRUE)) %>% 
+  ggplot(aes(x = reorder(IncomeGroup, Emissions), 
+             y = Emissions)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Cumulative greenhouse gas emissions \nbetween the years 1970 - 2012 by IncomeGroup",
+       x = "IncomeGroup",
+       y = "Emissions (kt of CO2 equivalent)") +
+  coord_flip() +
+  theme_bw() +
+  theme(axis.text.x=element_text(vjust = 0.5))
+p4
+```
+**Figure 4. Cumulative greenhouse gas emissions between the years 1970 - 2012 by IncomeGroup.** 
+Gulf between rich countries share on climate change vs. that of poor countries.
+
+```{r}
+p5 <- ghg_complete %>% 
+  filter(!is.na(IncomeGroup)) %>% 
+  group_by(Year, IncomeGroup) %>% 
+  summarise(Emissions = sum(Emissions, na.rm = TRUE)) %>% 
+  ggvis(~Year, ~Emissions, stroke = ~IncomeGroup) %>% 
+  layer_lines() %>% 
+  layer_points(size = 1, fill = ~IncomeGroup, fillOpacity := 0.2) %>% 
+  add_axis("x", values = seq(1970, 2012, by = 5)) %>% 
+  add_axis("y", title = "Emissions (kt of CO2 equivalent)",title_offset = 75)
+p5
+```
+**Figure 5. Rich countries have higher historical contributions to greenhouse gas emissions.**
+In 2005, upper middle income countries surpassed high income countries in greenhouse gas emissions.
+
+### 5.5 Which region contributed the most to global warming?
+
+```{r}
+p6 <- ghg_complete %>% 
+  filter(!is.na(Region)) %>% 
+  group_by(Region) %>% 
+  summarise(Emissions = sum(Emissions, na.rm = TRUE)) %>% 
+  ggplot(aes(x = reorder(Region, Emissions), 
+             y = Emissions)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Cumulative greenhouse gas emissions \nbetween the years 1970 - 2005 by Region",
+       x = "Region",
+       y = "Emissions (kt of CO2 equivalent)") +
+  theme_bw() +
+  theme(axis.text.x=element_text(angle = 45, vjust = 0.5))
+p6
+```
+**Figure 6. Greenhouse gas emissions by region.**
+
+```{r}
+p7 <- ghg_complete %>% 
+  filter(!is.na(Region)) %>% 
+  group_by(Year, Region) %>% 
+  summarise(Emissions = sum(Emissions, na.rm = TRUE)) %>% 
+  ggvis(~Year, ~Emissions, stroke = ~Region) %>% 
+  layer_lines() %>% 
+  layer_points(size = 1, fill = ~Region, fillOpacity := 0.2) %>% 
+  add_axis("x", values = seq(1970, 2012, by = 5)) %>% 
+  add_axis("y", title = "Emissions (kt of CO2 equivalent)", title_offset = 75) 
+p7
+```
+**Figure 7. Greenhouse gas emissions by region.**
+Emerging economies in Asia are emitting more greenhouse gas emissions and Europe declining.
+
+### 5.6 Which countries were the highest emitters in each IncomeGroup?
+
+```{r}
+p8 <- ghg_complete %>% 
+  filter(!is.na(IncomeGroup)) %>% 
+  ggplot(aes(x = Year, y = Emissions, group = Country)) +
+  geom_line() +
+  facet_wrap(~IncomeGroup) +
+  labs(title = "Greenhouse gas emissions (kt of CO2 equivalent)",
+       x = NULL,
+       y = NULL) +
+  scale_x_discrete(breaks = seq(1970, 2012, by = 5)) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+ggplotly(p8)
+```
+**Figure 8. Greenhouse gas emissions by Income group.**
+Plotly is used to make the plot interactive. We can hover over to the plot for more information. 
+1) The United States clearly stands out as the biggest emitters in the high income group. , India, and Congo Dem. Rep. bear the enormous share of responsibility in high, upper middle, lower middle, and low-income groups respectively.
+2) China, Russian Federation, and Brazil stand out as high emitters in the upper middle-income group. 
+3) India and Indonesia are the biggest contributor to global warming in the lower middle-income group and Congo in low-income group countries.
+4) We also observed regular spikes in emissions in the lower middle-income group. Quick google search showed that those spikes were caused by forest fires in Indonesia.
+
+### 5.7 Which countries were the highest emitters in each Region?
+
+```{r}
+p9 <- ghg_complete %>% 
+  filter(!is.na(Region)) %>% 
+  ggplot(aes(x = Year, y = Emissions, group = Country)) +
+  geom_line() +
+  facet_wrap(~Region) +
+  labs(title = "Greenhouse gas emissions (kt of CO2 equivalent)",
+       x = NULL,
+       y = NULL) +
+  scale_x_discrete(breaks = seq(1970, 2012, by = 5)) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+ggplotly(p9)
+```
+**Figure 9. Single country predominates greenhouse gas emissions in six geographic regions.**
+Brazil, India, Congo, Russian Federation, China, and United States are the highest emitters in Latin America & Caribbean, South Asia, Sub-Saharan Africa, Europe & Central Asia, East Asia & Pacific, and North America respectively.
+
+### 5.8 What does greenhouse gas emissions look like in the most recent year?
+
+We will now create interactive choropleth map using [Leaflet package for R](https://rstudio.github.io/leaflet/) to answer this question. The map will use color to encode greenhouse gas emissions associated with each country for a given year. The map is inspired by [leaflet choropleth tutorial](https://rstudio.github.io/leaflet/choropleths.html). The spatial data was downloaded from this [link](https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson) and the greenhouse gas emissions data from [WDI package](https://cran.r-project.org/web/packages/WDI/README.html) indicator EN.ATM.GHGT.KT.CE.
+
+1. Load the [countries JSON data](https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson) into spatial (sp) objects using geojson package.
+
+```{r}
+url <- "https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson"
+download.file(url, destfile = "data/countries.geojson")
+```
+
+
+```{r}
+countries <- geojsonio::geojson_read("data/countries.geojson", what = "sp")
+#url <- "https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson"
+#countries <- geojsonio::geojson_read(url, method = "local", what = "sp")
+class(countries)
+```
+
+```{r}
+names(countries)
+```
+
+2. Download the greenhouse gas emissions data for year 2012 by using the World Bank's API, parse the resulting JSON file, and format it in the long country-year format.
+
+```{r}
+wb_ghg <- WDI(country = "all",
+               indicator = "EN.ATM.GHGT.KT.CE",
+               start = 2012,
+               end = 2012,
+               extra = TRUE)
+```
+
+3. Merge a Spatial object having a data.frame using the three letter country code in each dataset
+
+```{r}
+countries_plus_ghg <- sp::merge(countries, wb_ghg, 
+                    by.x = "ISO_A3", by.y = "iso3c")
+names(countries_plus_ghg)
+```
+
+4. Complete code for plotting the choropleth map. 
+
+```{r}
+# Define numeric vector bins to add some color
+bins = ggplot2:::breaks(c(min(countries_plus_ghg$EN.ATM.GHGT.KT.CE, na.rm = TRUE)
+                ,max(countries_plus_ghg$EN.ATM.GHGT.KT.CE, na.rm = TRUE)),"width",n = 5)
+
+# Call colorBin to generate a palette function that maps the RColorBrewer 
+#"YlOrRd" colors to our bins.
+pal <- colorBin("YlGnBu", domain = countries_plus_ghg$EN.ATM.GHGT.KT.CE, bins = bins)
+
+# Generate the labels with some HTML
+labels <- sprintf(
+  "<strong>%s</strong><br/>%g",
+  countries_plus_ghg$country, countries_plus_ghg$EN.ATM.GHGT.KT.CE
+) %>% lapply(htmltools::HTML)
+
+# Generate interactive map
+m = leaflet(countries) %>% 
+  setView(0, 20, zoom = 1.5) %>%
+  addTiles()
+```
+
+
+```{r, width = 40, height = 30}
+p10 <- m %>% addPolygons(
+    fillColor = ~pal(countries_plus_ghg[["EN.ATM.GHGT.KT.CE"]]),
+    weight = 1,
+    opacity = 1,
+    color = "white",
+    fillOpacity = 0.7,
+    highlight = highlightOptions(
+      weight = 3,
+      color = "#666",
+      dashArray = "",
+      fillOpacity = 0.7,
+      bringToFront = TRUE),
+    label = labels,
+    labelOptions = labelOptions(
+      style = list("font-weight" = "normal", padding = "3px 8px"),
+      textsize = "15px",
+      direction = "auto")) %>%
+  addLegend(pal = pal, values = countries_plus_ghg[["EN.ATM.GHGT.KT.CE"]], opacity = 0.7, title = "Emissions (kt of CO2 equivalent)",
+    position = "bottomleft")
+p10
+```
+
+**Figure 10. Interactive Choropleth map showing greenhouse gas emissions data for each country in the world.**
+We can hover over to the map for exact emissions data. The choropleth map is only for the year 2012. It will be nice to have a drop-down text box to select and plot the map for each year. I have developed [greenhouse-gas Shiny app](https://arjan-hada.shinyapps.io/greenhouse-gas/) for this purpose.
+
+5. Top contributers to global warming in year 2012
+
+```{r}
+top_twenty_emitters_2012 <- ghg_complete %>% 
+  filter(!Country == "World" & Year == 2012) %>% 
+  select(Country, Year, Emissions) %>% 
+  arrange(desc(Emissions)) %>% 
+  do(head(.,20))
+
+p11 <- ggplot(top_twenty_emitters_2012, 
+       aes(x = reorder(Country, Emissions), 
+             y = Emissions)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Top 20 contributors to global warming in 2012",
+       x = "Country",
+       y = "Emissions (kt of CO2 equivalent)")  +
+  coord_flip() +
+  theme_bw() +
+  theme(axis.text.x=element_text(vjust = 0.5))
+ggplotly(p11)
+```
+**Figure 11. Top 20 contributors to global warming in 2012.**
+
+6. Years it would take for countries to match China's emissions in 2012.
+
+```{r}
+years_to_match_China_emission <- ghg_complete %>% 
+  filter(!Country == "World" & Year == 2012) %>% 
+  select(Country, Year, Emissions) %>% 
+  arrange(desc(Emissions)) %>% 
+  mutate(years_to_match_China = round(Emissions[[1]]/Emissions))
+years_to_match_China_emission
+```
+
+```{r}
+p12 <- years_to_match_China_emission %>% 
+  do(head(.,20)) %>% 
+  ggplot(aes(x = reorder(Country, -years_to_match_China), 
+             y = years_to_match_China)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Years it would take for countries to match China's emissions in 2012",
+       x = "Country",
+       y = "Years to match China")  +
+  geom_text(aes(label=years_to_match_China), hjust = -0.5) +
+  coord_flip() +
+  theme_bw() +
+  theme(axis.text.x=element_text(vjust = 0.5))
+p12
+```
+**Figure 12. Years it would take for highest 20 emitters to match China's emissions in 2012.**
+
+```{r, fig.width = 8}
+p13 <- years_to_match_China_emission %>% 
+  filter(!is.na(years_to_match_China)) %>% 
+  do(tail(.,20)) %>% 
+  ggplot(aes(x = reorder(Country, -years_to_match_China), 
+             y = years_to_match_China)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Years it would take for countries to match China's emissions in 2012",
+       x = "Country",
+       y = "Years to match China")  +
+  geom_text(aes(label=years_to_match_China), hjust = -0.03) +
+  coord_flip() +
+  theme_bw() +
+  theme(axis.text.x=element_text(vjust = 0.5))
+p13
+```
+**Figure 13. Years it would take for lowest 20 emitters to match China's emissions in 2012.**
+The countries most vulnerable to climate change are often some of the lowest emitters of greenhouse gases (Source ND-GAIN Matrix).
+
+7. Historical contributions of top five emitters of 2012
+
+```{r}
+p14 <- ghg_complete %>% 
+  filter(Country %in% c("China" ,"United States", "India", "Brazil", "Russian Federation")) %>% 
+  ggplot(aes(x = Year, y = Emissions, 
+             group = Country, colour =fct_reorder2(Country, Year, Emissions) )) +
+  geom_point(size = 1.5, alpha = 0.5) +
+  geom_line() +
+  labs(title = "Historical greenhouse gas emissions",
+       subtitle = "Countries with highest cumulative emissions between 1970 - 2012",
+       caption = "Data source: World Bank",
+       y = "Emissions (kt of CO2 equivalent)" ) +
+  scale_x_discrete(breaks = seq(1970, 2012, by = 5)) +
+  theme_bw() +
+  theme(legend.title = element_blank()) +
+  scale_color_brewer(palette = "Set1")
+p14 
+```
+**Figure 14. Historical emissions of top five emitters of 2012.**
+In 2005, China overtook the US as the world leader in greenhouse gas emissions. 
+
+Temperature increase is largely determined by total cumulative greenhouse gas emissions. However, looking at the country's total contribution to greenhouse gas emissions only tells part of the story of a country's contribution to global warming. Besides we need to look at greenhouse gas emissions per capita (person). 
+
+Note: There are limitations to interactivity with ggvis- interactive inputs can only modify the data. ggvis will not allow us to create a drop-down text box to compare emissions for different countries in the same plot. I have integrated that feature in my [greenhouse-gas Shiny app](https://arjan-hada.shinyapps.io/greenhouse-gas/).
+
+### 5.9 How do countries compare in greenhouse gas emissions per capita?
+
+1. Download the population data using the World Bank's API, parse the resulting JSON file, and format it in the long country-year format.
+
+```{r}
+wb_pop <- WDI(country = "all",
+               indicator = "SP.POP.TOTL",
+               start = 1970,
+               end = 2012,
+               extra = TRUE)
+```
+
+```{r}
+wb_pop <- wb_pop %>% 
+  select(SP.POP.TOTL, year, iso3c)
+wb_pop$iso3c <- as.character(wb_pop$iso3c)
+wb_pop$year <- as.character(wb_pop$year)
+wb_pop
+```
+
+
+2. Inner join greenhouse gas emissions data with population data and calculate emissions per capita
+
+```{r}
+ghg_per_capita <- ghg_complete %>% 
+  filter(!Country == "World") %>% 
+  inner_join(wb_pop, by = c("ISO_A3" = "iso3c", "Year" = "year")) %>% 
+  mutate(emissions_tonnes_per_capita = round(Emissions*1000/SP.POP.TOTL, 1)) %>% 
+  select(Country, Year, Emissions, SP.POP.TOTL, emissions_tonnes_per_capita, everything())
+ghg_per_capita
+```
+
+3. Greenhouse gas emissions per capita in year 2012
+
+```{r}
+p15 <- ghg_per_capita %>% 
+  filter(Year == 2012) %>% 
+  select(Country, emissions_tonnes_per_capita) %>% 
+  arrange(desc(emissions_tonnes_per_capita)) %>% 
+  do(head(.,20)) %>% 
+  ggplot(aes(x = reorder(Country, emissions_tonnes_per_capita), 
+             y = emissions_tonnes_per_capita)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Countries with highest greenhouse gas emissions per capita in 2012",
+       x = "Country",
+       y = "Emissions per capita (tonnes of CO2 equivalent)")  +
+  geom_text(aes(label=emissions_tonnes_per_capita), hjust = -0.01) +
+  coord_flip() +
+  theme_bw() +
+  theme(axis.text.x=element_text(vjust = 0.5))
+p15
+```
+**Figure 15. Countries with highest greenhouse gas emissions per capita.**
+
+4. Greenhouse gas emissions per capita for countries with highest total greenhouse gas emissions in 2012
+
+```{r}
+p16 <- ghg_per_capita %>% 
+  filter(Country %in% c("China" ,"United States", "India", "Brazil", "Russian Federation")) %>% 
+  ggvis(~Year, ~emissions_tonnes_per_capita, stroke = ~Country) %>% 
+  layer_points(size = 1, fill = ~Country, fillOpacity := 0.2) %>% 
+  layer_lines() %>% 
+  add_axis("x", values = seq(1970, 2012, by = 5)) %>% 
+  add_axis("y", title = "Emissions per capita (tonnes of CO2 equivalent)", title_offset = 75) %>% 
+  set_options(renderer="canvas")
+p16
+```
+**Figure 16. Historical emissions per capita of countries with highest total greenhouse gas emissions in 2012.**
+Examining greenhouse gas emissions per capita shows us that even though China's total emission exceeded that of United States, per capita emissions of US is ~2 times that of China and ~8 times that of India.
+
+5. Choropleth map of greenhouse gas emissions per capita for 2012
+
+```{r}
+ghg_per_capita_2012 <- ghg_per_capita %>% 
+  select(emissions_tonnes_per_capita, ISO_A3, Year, Country) %>% 
+  filter(Year == 2012)
+
+# Merge a Spatial object having a data.frame using the three letter country code in each dataset
+countries_plus_emissions_per_capita <- sp::merge(countries, ghg_per_capita_2012, 
+                    by = "ISO_A3")
+names(countries_plus_emissions_per_capita)
+```
+
+```{r}
+# Define numeric vector bins to add some color
+bins2 = ggplot2:::breaks(c(min(countries_plus_emissions_per_capita$emissions_tonnes_per_capita, na.rm = TRUE)
+                ,max(countries_plus_emissions_per_capita$emissions_tonnes_per_capita, na.rm = TRUE)),"width",n = 5)
+
+# Call colorBin to generate a palette function that maps the RColorBrewer 
+#"YlOrRd" colors to our bins.
+#pal2 <- colorBin("YlOrRd", domain = countries_plus_emissions_per_capita$emissions_tonnes_per_capita, bins = bins2)
+pal2 <- colorQuantile("YlGnBu", domain = countries_plus_emissions_per_capita$emissions_tonnes_per_capita, n = 5)
+
+# Generate the labels with some HTML
+labels2 <- sprintf(
+  "<strong>%s</strong><br/>%g",
+  countries_plus_emissions_per_capita$Country, countries_plus_emissions_per_capita$emissions_tonnes_per_capita
+) %>% lapply(htmltools::HTML)
+
+# Generate interactive map
+m2 = leaflet(countries) %>% 
+  setView(0, 20, zoom = 1.5) %>%
+  addTiles()
+```
+
+
+```{r, width = 40, height = 30}
+p17 <- m2 %>% addPolygons(
+    fillColor = ~pal2(countries_plus_emissions_per_capita[["emissions_tonnes_per_capita"]]),
+    weight = 1,
+    opacity = 1,
+    color = "white",
+    fillOpacity = 0.7,
+    highlight = highlightOptions(
+      weight = 3,
+      color = "#666",
+      dashArray = "",
+      fillOpacity = 0.7,
+      bringToFront = TRUE),
+    label = labels2,
+    labelOptions = labelOptions(
+      style = list("font-weight" = "normal", padding = "3px 8px"),
+      textsize = "15px",
+      direction = "auto")) %>%
+  addLegend(pal = pal2, values = countries_plus_emissions_per_capita[["emissions_tonnes_per_capita"]], opacity = 0.7, title = "Emissions per capita <br/> (tonnes of CO2 equivalent)",
+    position = "bottomleft")
+p17
+```
+**Figure 17. Per capita greenhouse gas emissions for countries in 2012.**
+
+## 6. Final Plots and Summary
+
+### 6.1 Global warming and greenhouse gas (GHG) emissions
+
+```{r, echo = FALSE}
+p1
+```
+```{r, echo = FALSE}
+p2
+```
+Our earth is warming up more than ever and the invisible culprit is greenhouse gas emissions from anthropogenic activities. Greenhouse gas emissions have increased by 93.5 percentage since 1970. Earth's temperature has set the new record three years in a row and fifth time since 2000. We are in truly uncharted territory. Greenhouse gases trap sunlight and solar radiation and cause global warming.
+
+### 6.2 US has been the biggest contributor of GHG through history and China recently surpassed US
+
+```{r, echo = FALSE}
+p14
+```
+```{r, echo = FALSE}
+p12
+```
+
+United States, China, Russian Federation, Brazil, and India are the countries with top 5 cumulative Greenhouse gas (GHG) emissions since 1970. US topped the list until 2005, when China overtook the US as the world leader in GHG emissions. In 2012 China emitted 12454710.6 (kt of CO2 equivalent) GHG. It would take countries like France and Italy 25 and 26 years respectively to emit the same amount of GHG. For some smaller economies like Bhutan, Nepal, Maldives it would take 3778 and 306 to match the same emission level. 
+
+Global warming is largely determined by total cumulative greenhouse gas emissions. However, we also need to consider average footprint of a person in a given country.
+
+### 6.3 Find the average per capita greenhouse gas emissions from your country
+
+```{r, echo = FALSE, width = 40, height = 30}
+p17
+```
+The interactive choropleth shows the average greenhouse gas emission per capita for every country (tonnes of CO2 equivalent). The per capita emission has been divided into five quantiles and colored accordingly.
+Find your country on the map and zoom in to see the average contribution of individuals.
+Per capita, GHG footprint of US is ~2 times that of China and ~8 times that of India.
+
+## 7. Reflections
+
+I started out with greenhouse gas (GHG) emissions dataset from world bank. Telling a meaningful story usually requires working with multiple datasets. The choropleth map required me to work with spatial data, merge spatial data for countries with greenhouse gas emissions data, and learn to use leaflet package for R. It was quite an experience to learn things on the fly. As I continued with the analysis I realized per capita emissions would be an important metric to complete the story. The data was not readily available and I had to join GHG emissions data with population data to calculate GHG per capita. It would have been nice if we had the most recent data up until 2016.
+
+From all this work I came up with a Shiny app where people can go and interact with the data in a way not possible in this Notebook. It is my first [Shiny app](https://arjan-hada.shinyapps.io/greenhouse-gas/) and I am proud of it. One problem is that Leaflet integration to Shiny is slow and the app takes time to refresh the data.
+
+It will be nice to break down the GHG emissions by different sectors- fossil fuel combustion, land usage, industrial processes and figure out the major emission source. It will also be nice to look at the carbon footprint of different companies and find out the world leaders in CO2 emissions.
+
+## 8. Conclusions
+
+The countries most vulnerable to climate change are often some of the lowest emitters of greenhouse gases (Source ND-GAIN Matrix). The countries that have benefitted the most from GHG ought to take bigger responsibility for curbing GHG emissions and keep the earth's temperature from rising. In light of this US has a moral responsibility to keep it's commitment to Paris agreement in Sep 3, 2016. Wonder what can we do at an individual level to reduce our greenhouse gas footprint? Check this [link](http://cotap.org/reduce-carbon-footprint/)
+
+## Reference
+ 
+1) [R for Data Science](http://r4ds.had.co.nz/)
+2) [Data Analysis with R](https://www.udacity.com/course/data-analysis-with-r--ud651)
+3) [A Unique Visualization of Greenhouse Gas Emissions](http://www.harcourtbrown.com/a-unique-visualization-of-global-greenhouse-gas-emissions)
+4) [Climate Change: Global Temperature](https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature)
+3) [Worldbank Greenhouse gas emissions](http://data.worldbank.org/indicator/EN.ATM.GHGT.KT.CE)
+4) [Leaflet for R](https://rstudio.github.io/leaflet/)
+5) [World Development Indicator](https://cran.r-project.org/web/packages/WDI/README.html)
+6) [Country Polygons as GeoJSON](http://data.okfn.org/data/core/geo-countries#data)
+7) [WDI leaflet tutorial](https://raw.githubusercontent.com/walkerke/teaching-with-datavis/master/wdi-leaflet/wdi_leaflet.R)
+8) [Shiny app - movie-explorer](http://shiny.rstudio.com/gallery/movie-explorer.html)
+9) [Shinydashboard examples](https://rstudio.github.io/shinydashboard/examples.html)
+10) [Shiny app - superzip-example](https://shiny.rstudio.com/gallery/superzip-example.html)
+

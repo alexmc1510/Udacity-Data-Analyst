@@ -1,0 +1,5 @@
+"0","wb_pop <- wb_pop %>% "
+"0","  select(SP.POP.TOTL, year, iso3c)"
+"0","wb_pop$iso3c <- as.character(wb_pop$iso3c)"
+"0","wb_pop$year <- as.character(wb_pop$year)"
+"0","wb_pop"

@@ -1,0 +1,4 @@
+"0","m = leaflet(countries_plus_ghg) %>% "
+"0","  setView(0, 20, zoom = 1) %>%"
+"0","  addTiles()"
+"0","m "

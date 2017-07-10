@@ -1,0 +1,7 @@
+"0","wb_ghg <- WDI(country = ""all"","
+"0","               indicator = ""EN.ATM.GHGT.KT.CE"","
+"0","               start = 2012,"
+"0","               end = 2012,"
+"0","               extra = TRUE)"
+"0","# Saving on object in RData format for loading the data in Shiny app"
+"0","save(wb_ghg, file = ""wb_ghg.RData"")"
