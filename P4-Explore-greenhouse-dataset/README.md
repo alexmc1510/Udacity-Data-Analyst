@@ -5,7 +5,7 @@ If you know me I deeply care about the health of our planet. The biggest threat 
 <br>
 Data: National Oceanic and Atmospheric Administration. Graphic and some description adapted from [NASA](https://climate.nasa.gov/causes/).
 
-In this project, I explore the historic greenhouse gas emissions data for different countries using R and apply exploratory data analysis techniques. In the process, I also build a Shiny app for everyone to explore the 42 years of greenhouse gas emissions by different countries. You can play with my shiny app [here](https://arjan-hada.shinyapps.io/greenhouse-gas/)
+In this project, I explore the historic greenhouse gas emissions data for different countries using R and apply exploratory data analysis techniques. In the process, I also build a [Shiny app](https://arjan-hada.shinyapps.io/greenhouse-gas/) for everyone to explore the 42 years of greenhouse gas emissions by different countries. You can interact with my shiny app [here](https://arjan-hada.shinyapps.io/greenhouse-gas/).
 
 ## Getting Started
 1. Clone the Udacity-Data-Analyst repo to your computer.
