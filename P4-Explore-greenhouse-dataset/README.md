@@ -2,6 +2,7 @@
 If you know me I deeply care about the health of our planet. The biggest threat our civilization and the life of planet :earth_americas: right now is global warming. According to Intergovernmental Panel on Climate Change - "Scientific evidence for warming of the climate system is unequivocal". The major cause of global warming is the human expansion of natural greenhouse gases. Continued exploitation of fossil fuels on business-as-usual rate has increased the concentration of atmospheric carbon dioxide (CO2) forcing the climate to change over the years.
 
 ![relentless_rise_of_co2](images/relentless_rise_of_co2.jpg)
+<br>
 Data: National Oceanic and Atmospheric Administration. Graphic and some description adapted from [NASA](https://climate.nasa.gov/causes/).
 
 In this project, I explore the historic greenhouse gas emissions data for different countries using R and apply exploratory data analysis techniques. In the process, I also build a Shiny app for everyone to explore the 42 years of greenhouse gas emissions by different countries. You can play with my shiny app [here](https://arjan-hada.shinyapps.io/greenhouse-gas/)
