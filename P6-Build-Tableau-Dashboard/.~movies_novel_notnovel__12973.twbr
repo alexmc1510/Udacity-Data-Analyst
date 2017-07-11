@@ -1,0 +1,785 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 10300.17.0615.2100                               -->
+<workbook source-build='10.3.1 (10300.17.0615.2100)' source-platform='mac' version='10.3' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='movies_cleaned' inline='true' name='federated.0t3gofj1dmz6n617iqkpt01r22mg' version='10.3'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='movies_cleaned' name='textscan.154r2kf0e4ax0x1as9b4o1db2vb2'>
+            <connection class='textscan' directory='/Users/arjanhada/Courses/tableau_course/tableau_project/data' filename='movies_cleaned.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.154r2kf0e4ax0x1as9b4o1db2vb2' name='movies_cleaned.csv' table='[movies_cleaned#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='integer' name='id' ordinal='0' />
+            <column datatype='string' name='imdb_id' ordinal='1' />
+            <column datatype='real' name='popularity' ordinal='2' />
+            <column datatype='integer' name='budget' ordinal='3' />
+            <column datatype='integer' name='revenue' ordinal='4' />
+            <column datatype='string' name='original_title' ordinal='5' />
+            <column datatype='string' name='cast' ordinal='6' />
+            <column datatype='string' name='homepage' ordinal='7' />
+            <column datatype='string' name='director' ordinal='8' />
+            <column datatype='string' name='overview' ordinal='9' />
+            <column datatype='integer' name='runtime' ordinal='10' />
+            <column datatype='string' name='genres' ordinal='11' />
+            <column datatype='string' name='production_companies' ordinal='12' />
+            <column datatype='date' name='release_date' ordinal='13' />
+            <column datatype='integer' name='vote_count' ordinal='14' />
+            <column datatype='real' name='vote_average' ordinal='15' />
+            <column datatype='integer' name='release_year' ordinal='16' />
+            <column datatype='real' name='budget_adj' ordinal='17' />
+            <column datatype='real' name='revenue_adj' ordinal='18' />
+            <column datatype='boolean' name='based_on_novel' ordinal='19' />
+            <column datatype='integer' name='release_month' ordinal='20' />
+            <column datatype='integer' name='release_day' ordinal='21' />
+            <column datatype='string' name='release_dayofweek' ordinal='22' />
+            <column datatype='integer' name='profit' ordinal='23' />
+            <column datatype='real' name='profit (%)' ordinal='24' />
+            <column datatype='real' name='profit_adj' ordinal='25' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[id]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>imdb_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[imdb_id]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>imdb_id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>popularity</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[popularity]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>popularity</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>budget</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[budget]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>budget</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>revenue</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[revenue]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>revenue</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>original_title</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[original_title]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>original_title</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cast</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[cast]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>cast</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>homepage</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[homepage]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>homepage</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>director</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[director]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>director</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>overview</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[overview]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>overview</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>runtime</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[runtime]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>runtime</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>genres</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[genres]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>genres</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>production_companies</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[production_companies]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>production_companies</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>release_date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[release_date]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>release_date</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;date&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>vote_count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[vote_count]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>vote_count</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>vote_average</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[vote_average]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>vote_average</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>release_year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[release_year]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>release_year</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>budget_adj</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[budget_adj]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>budget_adj</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>revenue_adj</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[revenue_adj]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>revenue_adj</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>based_on_novel</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[based_on_novel]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>based_on_novel</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;bool&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>release_month</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[release_month]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>release_month</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>release_day</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[release_day]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>release_day</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>release_dayofweek</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[release_dayofweek]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>release_dayofweek</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>profit</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[profit]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>profit</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>profit (%)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[profit (%)]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>profit (%)</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>profit_adj</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[profit_adj]</local-name>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias>profit_adj</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[movies_cleaned.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='1st' datatype='boolean' hidden='true' name='[Calculation_62205995201007620]' role='measure' type='nominal'>
+        <calculation class='tableau' formula='COUNT([vote_average]) &gt; [Calculation_825706867042369539] AND COUNT([profit_adj]) &gt; 1000000000 / COUNT([based_on_novel] != NULL)' />
+      </column>
+      <column caption='Calculation1' datatype='real' name='[Calculation_62205995251806219]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Avg Profit Adj][[Based On Novel]] - [Avg Profit Adj][![Based On Novel]]' />
+      </column>
+      <column caption='Avg  Ratings' datatype='real' name='[Calculation_825706867042369539]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='AVG([vote_average])' />
+      </column>
+      <column caption='Avg Profit Adj' datatype='real' name='[Calculation_825706867046535172]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='AVG([profit_adj])' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Based On Novel' datatype='boolean' name='[based_on_novel]' role='dimension' type='nominal' />
+      <column caption='Budget' datatype='integer' hidden='true' name='[budget]' role='measure' type='quantitative' />
+      <column caption='Budget Adj' datatype='real' hidden='true' name='[budget_adj]' role='measure' type='quantitative' />
+      <column caption='Cast' datatype='string' name='[cast]' role='dimension' type='nominal' />
+      <column caption='Director' datatype='string' name='[director]' role='dimension' type='nominal' />
+      <column caption='Genres' datatype='string' name='[genres]' role='dimension' type='nominal' />
+      <column caption='Homepage' datatype='string' name='[homepage]' role='dimension' type='nominal' />
+      <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+      <column caption='Imdb Id' datatype='string' name='[imdb_id]' role='dimension' type='nominal' />
+      <column caption='Original Title' datatype='string' name='[original_title]' role='dimension' type='nominal' />
+      <column caption='Overview' datatype='string' name='[overview]' role='dimension' type='nominal' />
+      <column caption='Popularity' datatype='real' hidden='true' name='[popularity]' role='measure' type='quantitative' />
+      <column caption='Production Companies' datatype='string' name='[production_companies]' role='dimension' type='nominal' />
+      <column caption='Profit (%)' datatype='real' hidden='true' name='[profit (%)]' role='measure' type='quantitative' />
+      <column caption='Profit' datatype='integer' hidden='true' name='[profit]' role='measure' type='quantitative' />
+      <column caption='Profit Adj' datatype='real' name='[profit_adj]' role='measure' type='quantitative' />
+      <column caption='Release Date' datatype='date' name='[release_date]' role='dimension' type='ordinal' />
+      <column caption='Release Day' datatype='integer' name='[release_day]' role='dimension' type='quantitative' />
+      <column caption='Release Dayofweek' datatype='string' name='[release_dayofweek]' role='dimension' type='nominal' />
+      <column caption='Release Month' datatype='integer' name='[release_month]' role='dimension' type='quantitative' />
+      <column caption='Release Year' datatype='integer' name='[release_year]' role='dimension' type='ordinal' />
+      <column caption='Revenue' datatype='integer' hidden='true' name='[revenue]' role='measure' type='quantitative' />
+      <column caption='Revenue Adj' datatype='real' hidden='true' name='[revenue_adj]' role='measure' type='quantitative' />
+      <column caption='Runtime' datatype='integer' hidden='true' name='[runtime]' role='measure' type='quantitative' />
+      <column caption='Ratings' datatype='real' name='[vote_average]' role='measure' type='quantitative' />
+      <column caption='Vote Count' datatype='integer' hidden='true' name='[vote_count]' role='measure' type='quantitative' />
+      <column-instance column='[based_on_novel]' derivation='None' name='[none:based_on_novel:nk]' pivot='key' type='nominal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.644007' measure-ordering='alphabetic' measure-percentage='0.355993' show-structure='true' user-set-layout='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:based_on_novel:nk]' type='palette'>
+            <map to='#1170aa'>
+              <bucket>false</bucket>
+            </map>
+            <map to='#c85200'>
+              <bucket>true</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <shared-views>
+    <shared-view name='federated.0t3gofj1dmz6n617iqkpt01r22mg'>
+      <datasources>
+        <datasource caption='movies_cleaned' name='federated.0t3gofj1dmz6n617iqkpt01r22mg' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0t3gofj1dmz6n617iqkpt01r22mg'>
+        <column-instance column='[release_year]' derivation='None' name='[none:release_year:qk]' pivot='key' type='quantitative' />
+        <column caption='Release Year' datatype='integer' name='[release_year]' role='dimension' type='ordinal' />
+      </datasource-dependencies>
+      <filter class='quantitative' column='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[none:release_year:qk]' included-values='in-range'>
+        <min>2001</min>
+        <max>2015</max>
+        <target field='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[none:release_year:qk]' />
+      </filter>
+    </shared-view>
+  </shared-views>
+  <worksheets>
+    <worksheet name='Scatterplot'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='movies_cleaned' name='federated.0t3gofj1dmz6n617iqkpt01r22mg' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0t3gofj1dmz6n617iqkpt01r22mg'>
+            <column caption='Based On Novel' datatype='boolean' name='[based_on_novel]' role='dimension' type='nominal' />
+            <column-instance column='[based_on_novel]' derivation='None' name='[none:based_on_novel:nk]' pivot='key' type='nominal' />
+            <column-instance column='[release_year]' derivation='None' name='[none:release_year:qk]' pivot='key' type='quantitative' />
+            <column caption='Profit Adj' datatype='real' name='[profit_adj]' role='measure' type='quantitative' />
+            <column caption='Release Year' datatype='integer' name='[release_year]' role='dimension' type='ordinal' />
+            <column-instance column='[profit_adj]' derivation='Sum' name='[sum:profit_adj:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[vote_average]' derivation='Sum' name='[sum:vote_average:qk]' pivot='key' type='quantitative' />
+            <column caption='Ratings' datatype='real' name='[vote_average]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[none:based_on_novel:nk]'>
+            <groupfilter function='except' user:ui-domain='database' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:based_on_novel:nk]' />
+              <groupfilter function='member' level='[none:based_on_novel:nk]' member='%null%' />
+            </groupfilter>
+          </filter>
+          <sort class='manual' column='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[none:based_on_novel:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>true</bucket>
+              <bucket>false</bucket>
+            </dictionary>
+          </sort>
+          <slices>
+            <column>[federated.0t3gofj1dmz6n617iqkpt01r22mg].[none:based_on_novel:nk]</column>
+            <column>[federated.0t3gofj1dmz6n617iqkpt01r22mg].[none:release_year:qk]</column>
+          </slices>
+          <aggregation value='false' />
+        </view>
+        <style>
+          <style-rule element='refline'>
+            <format attr='fill-above' id='refline0' value='#00000000' />
+            <format attr='fill-below' id='refline0' value='#00000000' />
+            <format attr='fill-above' id='refline1' value='#00000000' />
+            <format attr='fill-below' id='refline1' value='#00000000' />
+            <format attr='fill-above' id='refline2' value='#00000000' />
+            <format attr='fill-below' id='refline2' value='#00000000' />
+            <format attr='fill-above' id='refline3' value='#00000000' />
+            <format attr='fill-below' id='refline3' value='#00000000' />
+            <format attr='fill-above' id='refline4' value='#00000000' />
+            <format attr='fill-below' id='refline4' value='#00000000' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='8' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <color column='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[none:based_on_novel:nk]' />
+            </encodings>
+            <reference-line axis-column='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[sum:vote_average:qk]' enable-instant-analytics='true' formula='average' id='refline0' label-type='automatic' probability='95' scope='per-pane' value-column='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[sum:vote_average:qk]' z-order='3' />
+            <reference-line axis-column='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[sum:profit_adj:qk]' enable-instant-analytics='true' formula='constant' id='refline1' label-type='none' scope='per-pane' value='1000000000.0' value-column='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[sum:profit_adj:qk]' z-order='1' />
+            <reference-line axis-column='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[sum:profit_adj:qk]' enable-instant-analytics='true' formula='constant' id='refline2' label-type='none' scope='per-pane' value='500000000.0' value-column='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[sum:profit_adj:qk]' z-order='2' />
+            <reference-line axis-column='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[sum:profit_adj:qk]' enable-instant-analytics='true' formula='constant' id='refline3' label-type='none' scope='per-pane' value='250000000.0' value-column='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[sum:profit_adj:qk]' z-order='4' />
+            <reference-line axis-column='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[sum:profit_adj:qk]' enable-instant-analytics='true' formula='constant' id='refline4' label-type='none' scope='per-pane' value='0.0' value-column='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[sum:profit_adj:qk]' z-order='5' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-transparency' value='129' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0t3gofj1dmz6n617iqkpt01r22mg].[sum:profit_adj:qk]</rows>
+        <cols>[federated.0t3gofj1dmz6n617iqkpt01r22mg].[sum:vote_average:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='Slopegraph'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='movies_cleaned' name='federated.0t3gofj1dmz6n617iqkpt01r22mg' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0t3gofj1dmz6n617iqkpt01r22mg'>
+            <column caption='Avg Profit Adj' datatype='real' name='[Calculation_825706867046535172]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='AVG([profit_adj])' />
+            </column>
+            <column caption='Based On Novel' datatype='boolean' name='[based_on_novel]' role='dimension' type='nominal' />
+            <column-instance column='[based_on_novel]' derivation='None' name='[none:based_on_novel:nk]' pivot='key' type='nominal' />
+            <column-instance column='[release_year]' derivation='None' name='[none:release_year:qk]' pivot='key' type='quantitative' />
+            <column caption='Profit Adj' datatype='real' name='[profit_adj]' role='measure' type='quantitative' />
+            <column caption='Release Year' datatype='integer' name='[release_year]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_825706867046535172]' derivation='User' name='[usr:Calculation_825706867046535172:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[none:based_on_novel:nk]'>
+            <groupfilter function='except' user:ui-domain='database' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:based_on_novel:nk]' />
+              <groupfilter function='member' level='[none:based_on_novel:nk]' member='%null%' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0t3gofj1dmz6n617iqkpt01r22mg].[none:based_on_novel:nk]</column>
+            <column>[federated.0t3gofj1dmz6n617iqkpt01r22mg].[none:release_year:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane id='21' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <text column='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[none:release_year:qk]' />
+              <lod column='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[none:release_year:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='datalabel'>
+                <format attr='color-mode' value='match' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='size' value='0.60370165109634399' />
+                <format attr='mark-transparency' value='180' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-markers-mode' value='all' />
+                <format attr='mark-color' value='#e15759' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0t3gofj1dmz6n617iqkpt01r22mg].[usr:Calculation_825706867046535172:qk]</rows>
+        <cols>[federated.0t3gofj1dmz6n617iqkpt01r22mg].[none:based_on_novel:nk]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' name='Slopegraph'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[none:release_year:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+    </window>
+    <window class='worksheet' maximized='true' name='Scatterplot'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='8' param='[federated.0t3gofj1dmz6n617iqkpt01r22mg].[none:based_on_novel:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+    </window>
+  </windows>
+</workbook>
