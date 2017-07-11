@@ -2,7 +2,7 @@
 
 A movie producer :clapper: wants to better understand film industry :movie_camera: trends before releasing its next movie. I will explore OMDB movie dataset and build Tableau dashboards to answer a set of questions and tell a story with data. My work will be a reflection of the theory and practice of data visualization, such as visual encodings, design principles, and effective communication.
 
-![poster_tmdb](images/poster_tmdb.jpg)
+![poster_tmdb](images/poster_tmdb.png)
 <br>
 Source:- [TheMovieDB](https://www.themoviedb.org/movie/now-playing?language=en)
 
