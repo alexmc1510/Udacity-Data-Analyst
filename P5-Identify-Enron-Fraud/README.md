@@ -3,6 +3,8 @@
 In 2000, Enron was one of the largest companies in the United States. By 2002, it had collapsed into bankruptcy due to widespread corporate fraud. In the resulting Federal investigation, a significant amount of typically confidential information entered into the public record, including tens of thousands of emails :e-mail: and detailed financial :dollar: data for top executives. In this project, I play detective :mag_right:, and put my skills to use by building a person of interest :suspect: identifier based on financial and email data made public as a result of the Enron scandal. This data has been combined with a hand-generated list of persons of interest in the fraud case, which means individuals who were indicted, reached a settlement or plea deal with the government, or testified in exchange for prosecution immunity.
 
 ![enron_fraud](images/enron_fraud.jpg)
+<br>
+Source: [Newsweek](https://amazingtradingacademydotcom.files.wordpress.com/2016/11/enron-newsweek.jpg)
 
 **Starter code**      
 on git: git clone https://github.com/udacity/ud120-projects.git      
