@@ -3,7 +3,8 @@
 I live in the outskirts of Austin and love the plethora of outdoor activities :rowboat: the city of Austin has to offer. For this project, I wrangled 17 million lines of raw OpenStreetMap data :memo: of Austin (TX), using Python and built a user-friendly SQLite database. I used data munging techniques, such as assessing the quality of the data for validity, accuracy, completeness, consistency, and uniformity, to clean the OpenStreetMap data. In return, I discovered :tada: new things about Austin.
 
 ![openstreetmap](images/openstreetmap.jpg)
-[Image courtesy](https://www.slideshare.net/mikel_maron/osm-transport)
+<br>
+[Image courtesy - Mikel Maron](https://www.slideshare.net/mikel_maron/osm-transport)
 
 # Project Details
 ### 1. A pdf document containing your answers to the rubric questions. This file should document your data wrangling process.
