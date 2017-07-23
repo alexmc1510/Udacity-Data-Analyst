@@ -14,6 +14,6 @@ Source:- [TheMovieDB](https://www.themoviedb.org/movie/now-playing?language=en)
 1. Clone the Udacity-Data-Analyst repo to your computer.
 2. Get into the folder using `cd Udacity-Data-Analyst/P6-Build-Tableau-Dashboard`.
 3. Use `jupyter notebook` to launch Notebook Dashboard.
-4. Open P6-Build-Tableau-Dashboard-0.ipynb from the Notebook Dashboard to view the full report including data cleaning, Tableau visualization, and write-up.
+4. Open P6-Build-Tableau-Dashboard-0.ipynb from the Notebook Dashboard to view the detailed step-by-step guide for data cleaning and prepping for Tableau visualization.
 5. P6-Build-Tableau-Dashboard-1.md - final write-up for submission to Udacity.
 6. Start exploring the world of movies.
