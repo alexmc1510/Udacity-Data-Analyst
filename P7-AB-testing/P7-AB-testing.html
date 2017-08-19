@@ -11835,16 +11835,17 @@ div#notebook {
 <p><strong>Reasons behind metric selection</strong></p>
 <ul>
 <li>Number of cookies will be a good population sizing invariant because it is randomly assigned between control and experiment group.</li>
-<li>Number of cookies, Number of clicks, and Click-through-probability are measured before free trial screener is triggered, so will be invariant.</li>
-<li>Gross conversion, Retention and Net conversion can be used as an evaluation metric because the numerator of the metric happens after free trial screener is triggered. </li>
+<li>Number of cookies, Number of clicks, and Click-through-probability are measured before free trial screener is triggered, so will be <code>invariant</code>.</li>
+<li>Gross conversion, Retention and Net conversion can be used as an <code>evaluation metric</code> because the numerator of the metric happens after free trial screener is triggered. </li>
 <li>These are the metric that Udacity is trying to track in this experiment. By adding free trial screener after Start Free Trial button, the experiment could affect the number of user-ids to complete checkout. </li>
+<li>Number of user-id is the number of users who enroll in the free trial. It cannot be used as an invariant metric or evaluation metric. User-ids are only tracked only after a student enrolls in the free trial and will not be equally distributed between the control and experimental groups. Hence it cannot be used as an invariant metric. It is essentially number of enrollments and is a raw count. We cannot adjust raw count to differences in group sizes and we are already using Gross conversion to measure the impact on enrollments that can normalize. Gross conversion is more robust than number of user IDs since it is normalized to the unit of diversion. So I opted not to use Number of user-id as evaluation metric either.</li>
 </ul>
-<p><strong> Results to look for in order to launch the experiment</strong></p>
+<p><strong> Results to look for in order to launch the experiment</strong>
+<br>
+Our experimental goals are (1) to reduce enrollments by unprepared students (2) without significantly reducing the number of students who complete the free trial and make at least one payment.</p>
 <ul>
-<li>Our evaluation metrics need to be both statistically and practically significant. In other words, we need to be confident that the true difference between experimental and control group is at least what is required to declare practical significance.</li>
-<li>Since the workload expectations have been set upfront, number of students completing the checkout might go down, so the Gross conversion will decrease.</li>
-<li>We would expect the Retention to increase.</li>
-<li>Net conversion might go down, however, it is hard to predict beforehand.</li>
+<li>Goal 1 can be achieved by a decrease in Gross conversion. Since the workload expectations have been set upfront, we expect the number of students completing the checkout to go down and the Gross conversion to decrease. </li>
+<li>Goal 2 can be achieved by an increase or no change in Retention and Net conversion.</li>
 </ul>
 
 </div>
@@ -12003,7 +12004,7 @@ div#notebook {
 </table>
 <p>If we divert 100% of Udacity’s traffic, the experiment will still run for 119 days. This is an unreasonably long time.
 However, if we drop Retention and just measure Net conversion and Gross conversion, the experiment can be run in 18 days with enough pageviews to adequately power the experiment.</p>
-<p>The experiment constitutes a minimal risk to both students and Udacity. Entire traffic can be directed to this experiment if there are no other parallel experiment. Even if we divert 50% of Udacity's traffic the experiment can be done in 36 days.</p>
+<p>The experiment constitutes a minimal risk to both students and Udacity. 1. There is no chance that anyone gets hurt because of the duration of our experiment. 2. We are not dealing with sensitive data - political attitudes, personal disease history, sexual preferences etc. Entire traffic can be directed to this experiment if there are no other parallel experiment. Even if we divert 50% of Udacity's traffic the experiment can be done in 36 days.</p>
 
 </div>
 </div>
@@ -12098,14 +12099,6 @@ However, if we drop Retention and just measure Net conversion and Gross conversi
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">Retention</td>
-<td style="text-align:center">0.008104</td>
-<td style="text-align:center">0.05409</td>
-<td style="text-align:center">0.03109</td>
-<td style="text-align:center">Yes</td>
-<td>No</td>
-</tr>
-<tr>
 <td style="text-align:center">Net conversion</td>
 <td style="text-align:center">-0.01160</td>
 <td style="text-align:center">0.001857</td>
@@ -12123,7 +12116,8 @@ However, if we drop Retention and just measure Net conversion and Gross conversi
 </tr>
 </tbody>
 </table>
-<p>Statistical significance was determined based on whether or not the Confidence interval bound contained 0. Practical significance was determined based on minimum detectable effect ($d_{min}$) parameter.</p>
+<p>Statistical significance was determined based on whether or not the Confidence interval bound contained 0. Practical significance was determined based on minimum detectable effect ($d_{min}$) parameter. The $d_{min}$ for Gross conversion was set at 0.01 and for Net conversion was set at 0.0075.
+For Gross conversion, our observed value is more than two below the practical significance boundary, and the confidence interval does not include zero. Hence, Gross conversion is both statistically and practically significant. However, for Net Conversion our observed value is well within the boundaries of practical significance, and confidence interval includes a zero. Hence, Net conversion is neither statistically nor practically significant.</p>
 
 </div>
 </div>
@@ -12152,26 +12146,23 @@ However, if we drop Retention and just measure Net conversion and Gross conversi
 <th style="text-align:center"># days with positive change</th>
 <th style="text-align:center"># days</th>
 <th style="text-align:center">two-tail P value</th>
+<th style="text-align:center">Statistical Significance</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">Retention</td>
-<td style="text-align:center">13</td>
-<td style="text-align:center">23</td>
-<td style="text-align:center">0.6776</td>
-</tr>
 <tr>
 <td style="text-align:center">Net conversion</td>
 <td style="text-align:center">10</td>
 <td style="text-align:center">23</td>
 <td style="text-align:center">0.6776</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td style="text-align:center">Gross conversion</td>
 <td style="text-align:center">4</td>
 <td style="text-align:center">23</td>
 <td style="text-align:center">0.0026</td>
+<td style="text-align:center">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -12195,11 +12186,18 @@ However, if we drop Retention and just measure Net conversion and Gross conversi
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We did not use Bonferroni correction for sign test because we were only measuring one metric at a time.</p>
+<p>We did not use Bonferroni correction for sign test.</p>
+<ul>
+<li>To propose our recommendations we need to consider both the net and gross conversion. We want both metrics to match our expectations (we look for a decrease in gross conversion and for a increase in the net conversion). We are in a situation where ALL metrics need to match our expectations in order to launch the change. </li>
+<li>This is not the same as the case where ANY metric needs to match the expectations. In fact, it is the exact opposite. </li>
+<li>False negatives have the greatest impact when ALL metrics must be satisfied to trigger launch, since a single false negative can govern the decision.</li>
+<li>False positives have the greatest impact when ANY metrics satisfied can trigger launch, since a single false positive will govern the decision.</li>
+<li>The Bonferroni correction controls for false positives at the expense of power, or increased false negatives. </li>
+</ul>
+<p>For Net conversion both the Effect size test and Sign test are not statistically significant whereas for Gross conversion both the tests are statistically significant.</p>
 <p>The effect size test for Retention is statistically significant, whereas sign test is not. There are two possible reasons. 
 1)  We did not run the experiment long enough to have adequate page views, and hence enough Power for this metric.
 2)  Sign test is a non-parametric test and has lower power than the effect size test.</p>
-<p>Effect size test and sign test for Net conversion are not statistically significant whereas for Gross conversion both the tests are statistically significant.</p>
 
 </div>
 </div>
@@ -12218,7 +12216,11 @@ However, if we drop Retention and just measure Net conversion and Gross conversi
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>There was a statistically and practically significant decrease in Gross conversion, but no significant change in Net conversion. The "free trial screener" decreased the number of students who completed checkout, but did not affect the number of students who remain enrolled past 14 days boundary. My recommendation will be to not launch the change.</p>
+<p>My recommendation will be to not launch the change.</p>
+<p>We had to achieve two objectives in order to launch the change - 1) reduce the number of frustrated students who left the free trial because they didn't have enough time 2) without significantly reducing the number of students who complete the free trial and make at least one payment.</p>
+<p>1) There was a statistically and practically significant decrease in Gross conversion. It is behaving like expected. The "free trial screener" decreased the number of students who completed check out because the expectations were set up front.</p>
+<p>2) However, the Net conversion was neither statistically nor practically significant. It isn't behaving like we expected in order to launch the change. Even more, the lower bound of the confidence interval is below the negative boundary of the practical significance. It's possible that this number went down and reduced the number of students who complete the free trial and make at least one payment. This is not desirable.
+<img src="images/net_conversion.png" alt="Net conversion image"></p>
 
 </div>
 </div>
@@ -12239,28 +12241,20 @@ However, if we drop Retention and just measure Net conversion and Gross conversi
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Udacity can test a change where they add a “<strong>Book Welcome Videochat</strong>” button after enrolling in the course. So, if the student clicks Start free trial and subsequently checkout and enroll, they will be required to attend a video chat appointment with a Udacity coach within the first 14 days free trial.</p>
+<p>Udacity can test a change where they add a “<strong>Book Welcome Videochat</strong>” button after enrolling in the course. So, if the student clicks Start free trial and subsequently check out and enroll, they will be required to attend a video chat appointment with a Udacity coach within the first 14 days free trial.</p>
 <p>The <strong>hypothesis</strong> is that talking to Udacity coach will provide student with a personal touch, boost student morale’s, set clear expectations about the course and benefits of completing the course with past examples. If the hypothesis is held true Udacity will boost student’s enthusiasm and provide momentum to complete the course.</p>
-<p>The <strong>unit of diversion</strong> will be user-id because the experiment is being done after student enrolls in the course. We want each student to have consistent experience independent of platform and device. The same user-id cannot book video chat appointment twice.</p>
+<p>The <strong>unit of diversion</strong> will be user-id because the experiment is being done after the student enrolls in the course. We want each student to have consistent experience independent of platform and device. The same user-id cannot book video chat appointment twice.</p>
+<p>The experiment that takes place after enrollment, so cookie and click based metrics are not relevant since we are already past that point in the funnel. Those metrics are as well less stable than the ones that are based on the user_IDs, which should be chosen here.</p>
 <p><strong>Invariant metrics</strong></p>
 <ul>
-<li>a) Number of cookies</li>
-<li>b) Number of clicks</li>
-<li>c) Click-through-probability</li>
-<li>d) Number of user-ids</li>
-<li><p>e) Gross conversion</p>
-</li>
-<li><p>User-ids are being explicitly randomized between control and experiment group. One user-id can correspond to multiple cookies, so cookies should be split evenly as well. User-id and cookies will serve as good population sizing invariant.</p>
-</li>
-<li><p>Number of clicks, Click-through-probability, and Gross conversion is all measured before our experiment and hence should be invariant metrics.</p>
-</li>
+<li>Number of user-ids</li>
 </ul>
+<p>User-ids are being explicitly randomized between control and experiment group. User-id will serve as good population sizing invariant.</p>
 <p><strong>Evaluation metrics</strong></p>
 <ul>
-<li>a) Retention</li>
-<li>b) Net conversion</li>
+<li>Retention</li>
 </ul>
-<p>Retention and Net conversion are the metrics that Udacity is trying to measure in this experiment. The experiment will affect the number of user-ids to remain enrolled past the 14-day boundary.</p>
+<p>Retention is the metrics that Udacity is trying to measure in this experiment. The experiment will affect the number of user-ids to remain enrolled past the 14-day boundary.</p>
 
 </div>
 </div>

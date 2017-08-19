@@ -1,6 +1,10 @@
 ** 1. Describe a data project you worked on recently.**
+
 I recently worked on OpenStreetMap (OSM) data project. I wanted to parse the raw OSM data of Austin, TX in XML format to the tabular format for entry into SQLite database. I was particularly interested in node and way tags. Nodes are point features defined by its latitude, longitude and node id. Ways are paths through a city of one kind or another like Street, Avenue, Drive, Boulevard etc.
-While auditing the osm file for validity, accuracy, completeness, consistency, and uniformity I found that there were several problems with the map. There were Overabbreviated Street Names, Inconsistent and Incorrect postal codes, Inconsistent state name, Inconsistent phone number format, Username error etc. I wrote scripts to fix all the problems with the data, parsed the data into a tabular format and imported it into the SQLite database following a schema. It was quite a work, but I learned a lot.
+<br>
+While auditing the osm file for validity, accuracy, completeness, consistency, and uniformity I found that there were several problems with the map. There were Overabbreviated Street Names, Inconsistent and Incorrect postal codes, Inconsistent state name, Inconsistent phone number format, Username error etc. I wrote scripts to fix problems with the data, parsed the data into a tabular format and imported it into the SQLite database following a schema. 
+<br>
+It was quite a work, the dataset was large - 17 million lines of raw XML, so I had to first create a random subset of the data, and later apply the scripts I wrote to full dataset but I learned a lot.
 
 **2. You are given a ten piece box of chocolate truffles. You know based on the label that six of the pieces have an orange cream filling and four of the pieces have a coconut filling. If you were to eat four pieces in a row, what is the probability that the first two pieces you eat have an orange cream filling and the last two have a coconut filling?**
 
@@ -70,4 +74,6 @@ Underfitting occurs when the model performs well neither on the training dataset
 
 **6. If you were to start your data analyst position today, what would be your goals a year from now?**
 
-What really excites me is to translate my technical and problem-solving skills into products that can have a lasting impact on the business and the people. I would continue analyzing the company's large treasure of datasets from tens of thousands of news and business sources in almost 200 countries to generate actionable insights that can add value to the business. I envision myself as a data scientist and an invaluable asset to the team who constantly puts himself out of comfort zone. I understand lifelong learning will be an important part of realizing these goals, hence I will continue learning Machine learning, Deep learning, and Artifical Intelligence on my personal level.
+What really excites me is to translate my technical and problem-solving skills into products that can have a lasting impact on the business and the people. At first I would make myself comfortable with the Dow Jones database, ongoing business intelligence efforts, and large scale data science projects. I would continue analyzing the company's large treasure of datasets from tens of thousands of news and business sources in almost 200 countries to generate actionable insights that can add value to the business. I will learn about the customer metrics that Dow Jones tracks and work with the team to improve the experience of reading The Wall Street Journal.
+
+I envision myself as a data scientist and an invaluable asset to the team who constantly puts himself out of comfort zone. I understand lifelong learning will be an important part of realizing these goals, hence I will continue learning Machine learning, Deep learning, and Artifical Intelligence on my personal level.
